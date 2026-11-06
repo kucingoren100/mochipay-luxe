@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Riwayat & Analisis Cuan</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#5a4983",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#49454e",
+            "on-tertiary-fixed-variant": "#6e3254",
+            "inverse-on-surface": "#f6eefe",
+            "surface-tint": "#655689",
+            "secondary-container": "#d0bcff",
+            "on-primary": "#ffffff",
+            "on-surface": "#1d1a25",
+            "secondary-fixed-dim": "#d0bcff",
+            "secondary": "#665590",
+            "primary-fixed-dim": "#cfbef8",
+            "on-primary-fixed": "#201242",
+            "inverse-primary": "#cfbef8",
+            "surface": "#fef7ff",
+            "surface-variant": "#e7dff0",
+            "surface-dim": "#dfd7e7",
+            "on-background": "#1d1a25",
+            "surface-container-high": "#ede5f5",
+            "tertiary-container": "#e599bf",
+            "tertiary": "#894a6c",
+            "primary-container": "#b8a7e0",
+            "on-tertiary-fixed": "#390527",
+            "primary-fixed": "#e9ddff",
+            "primary": "#655689",
+            "on-primary-fixed-variant": "#4d3f70",
+            "surface-bright": "#fef7ff",
+            "surface-container-low": "#f9f1ff",
+            "on-secondary-fixed": "#210f48",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#cac4cf",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#692e50",
+            "outline": "#7a757f",
+            "tertiary-fixed-dim": "#feafd6",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#e9ddff",
+            "on-secondary-fixed-variant": "#4e3d76",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#332e3b",
+            "surface-container-highest": "#e7dff0",
+            "background": "#fef7ff",
+            "tertiary-fixed": "#ffd8e9",
+            "surface-container": "#f3ebfb",
+            "on-error": "#ffffff",
+            "on-primary-container": "#493b6c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xxl": "3rem",
+            "margin-mobile": "1rem",
+            "margin": "1.5rem",
+            "space-xxs": "0.125rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Outfit"],
+            "display-lg-mobile": ["Outfit"],
+            "body-lg": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "label-md": ["Manrope"],
+            "display-lg": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "body-sm": ["Manrope"],
+            "body-md": ["Manrope"],
+            "financial-number-lg": ["Outfit"],
+            "financial-number-md": ["Outfit"],
+            "headline-lg": ["Outfit"]
+          },
+          "fontSize": {
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "financial-number-lg": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "financial-number-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    .card-luxe {
+      background: #FFFFFF;
+      box-shadow: 0px 4px 16px -2px rgba(184, 167, 224, 0.18), 0px 1px 2px 0px rgba(46, 42, 54, 0.04);
+      border: 1px solid rgba(184, 167, 224, 0.25);
+    }
+    .tactile-inset {
+      box-shadow: inset 0px 2px 4px 0px rgba(46, 42, 54, 0.05);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased font-body-md min-h-screen pb-24 selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Shell Top Bar -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin-mobile py-space-sm flex justify-between items-center w-full shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Kembali" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container active:scale-95 transition-transform duration-150 text-primary">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface flex items-center gap-1">
+          Riwayat & Analisis Cuan <span class="text-base">📊</span>
+</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Buku Mutasi Gemes & Estetik</p>
+</div>
+</div>
+<button class="px-space-md py-1.5 rounded-full font-label-md text-label-md text-primary bg-surface-container-high hover:bg-primary-fixed active:scale-95 transition-all">
+      Reset
+    </button>
+</header>
+<!-- Filter Pill Periode Waktu -->
+<section class="px-margin-mobile pt-space-sm pb-space-xs">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm whitespace-nowrap active:scale-95 transition-transform">
+        Bulan Ini 🌸
+      </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-primary font-label-md text-label-md whitespace-nowrap active:scale-95 transition-transform">
+        Minggu Ini ⚡
+      </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-primary font-label-md text-label-md whitespace-nowrap active:scale-95 transition-transform">
+        Bulan Lalu 🍂
+      </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low text-primary flex items-center gap-1 font-label-md text-label-md whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]" data-icon="tune">tune</span> Custom
+      </button>
+</div>
+</section>
+<!-- Main Content Canvas -->
+<main class="max-w-4xl mx-auto px-margin-mobile mt-space-sm space-y-space-md">
+<!-- Bento Grid Section: Ringkasan & Donut Breakdown -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<!-- Card 1: Ringkasan Evaluasi Gaul (8 Cols on Desktop) -->
+<section class="card-luxe rounded-2xl p-space-lg md:col-span-7 flex flex-col justify-between relative overflow-hidden bg-gradient-to-br from-surface-container-lowest via-surface-container-lowest to-surface-container-low">
+<div class="absolute -right-10 -bottom-10 w-36 h-36 bg-primary-fixed/40 rounded-full blur-2xl pointer-events-none"></div>
+<div>
+<!-- Status Tag Lucu -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/50 border border-secondary/20 mb-space-md">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-on-secondary-container font-bold">
+              Skor Keuangan: Sefruit Anak Rajin Hemat ✨ (Aman dari Bokek)
+            </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Total Saldo Arus Kas</p>
+<div class="flex items-baseline gap-2 mb-space-lg">
+<span class="font-financial-number-lg text-financial-number-lg text-primary tracking-tight">Rp +5.330.000</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold bg-secondary-fixed px-2 py-0.5 rounded-full">+63% Surplus</span>
+</div>
+</div>
+<!-- Dua Kartu Mini: Pemasukan & Pengeluaran -->
+<div class="grid grid-cols-2 gap-3 pt-space-xs">
+<!-- Cuan Masuk -->
+<div class="bg-surface-container-low/70 border border-outline-variant/30 rounded-xl p-3 flex flex-col">
+<div class="flex items-center gap-1.5 text-on-surface-variant mb-1">
+<span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px]" data-icon="trending_up">trending_up</span>
+</span>
+<span class="font-label-md text-label-md font-semibold">Pemasukan/Cuan</span>
+</div>
+<span class="font-financial-number-md text-financial-number-md text-on-surface font-bold">Rp 8.450.000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">2 transaksi cuan</span>
+</div>
+<!-- Total Pengeluaran -->
+<div class="bg-surface-container-low/70 border border-outline-variant/30 rounded-xl p-3 flex flex-col">
+<div class="flex items-center gap-1.5 text-on-surface-variant mb-1">
+<span class="w-6 h-6 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px]" data-icon="shopping_bag">shopping_bag</span>
+</span>
+<span class="font-label-md text-label-md font-semibold">Total Pengeluaran</span>
+</div>
+<span class="font-financial-number-md text-financial-number-md text-error font-bold">Rp 3.120.000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">37 kali jajan</span>
+</div>
+</div>
+</section>
+<!-- Card 2: Visual Donut Breakdown Kategori (5 Cols on Desktop) -->
+<section class="card-luxe rounded-2xl p-space-lg md:col-span-5 flex flex-col justify-between bg-surface-container-lowest">
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Breakdown Jajan 🍰</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Kategori paling sering bocor alus</p>
+</div>
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="donut_large">donut_large</span>
+</div>
+<!-- SVG Donut Chart Minimalis Pastel -->
+<div class="flex items-center justify-center py-2 relative">
+<svg class="w-40 h-40 transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background Ring -->
+<circle cx="50" cy="50" fill="none" r="38" stroke="#ede5f5" stroke-width="12"></circle>
+<!-- Nongkrong & Kopi 35% -> stroke-dasharray="83.5 238.7" stroke-dashoffset="0" -->
+<circle class="transition-all duration-700" cx="50" cy="50" fill="none" r="38" stroke="#b8a7e0" stroke-dasharray="83.5 238.7" stroke-dashoffset="0" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Skincare Gemes 28% -> 66.8 -->
+<circle class="transition-all duration-700" cx="50" cy="50" fill="none" r="38" stroke="#e599bf" stroke-dasharray="66.8 238.7" stroke-dashoffset="-85" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Makan Enak 22% -> 52.5 -->
+<circle class="transition-all duration-700" cx="50" cy="50" fill="none" r="38" stroke="#ffd8e9" stroke-dasharray="52.5 238.7" stroke-dashoffset="-153" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Transport 15% -> 35.8 -->
+<circle class="transition-all duration-700" cx="50" cy="50" fill="none" r="38" stroke="#665590" stroke-dasharray="35.8 238.7" stroke-dashoffset="-207" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">Top Jajan</span>
+<span class="font-headline-sm text-headline-sm font-extrabold text-primary">35%</span>
+<span class="font-label-sm text-label-sm text-tertiary">Kopi Susu</span>
+</div>
+</div>
+<!-- Legend Categories -->
+<div class="grid grid-cols-2 gap-2 pt-space-xs text-left">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-[#b8a7e0] shrink-0"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Nongkrong & Kopi <strong class="text-on-surface">35%</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-[#e599bf] shrink-0"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Skincare Gemes <strong class="text-on-surface">28%</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-[#ffd8e9] shrink-0"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Makan Enak <strong class="text-on-surface">22%</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-[#665590] shrink-0"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Transport <strong class="text-on-surface">15%</strong></span>
+</div>
+</div>
+</section>
+</div>
+<!-- Search Bar & Filter Interactive Segment -->
+<section class="space-y-space-sm">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary" data-icon="search">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-[#F3EFF9] tactile-inset rounded-2xl text-on-surface placeholder:text-on-surface-variant/60 border-0 focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-md" placeholder="Cari jajan boba, kopi, skincare..." type="text"/>
+<button aria-label="Filter tambahan" class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-xl hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+<!-- Quick Category Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+<button class="px-4 py-1.5 rounded-full bg-secondary text-on-secondary font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1 shadow-sm">
+<span>Semua</span>
+<span class="w-4 h-4 rounded-full bg-white/20 text-[10px] flex items-center justify-center">5</span>
+</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-error font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1">
+<span>Jajan Boncos 💸</span>
+</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-primary font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1">
+<span>Cuan Masuk 🍯</span>
+</button>
+</div>
+</section>
+<!-- Daftar Rincian Mutasi Lengkap -->
+<section class="space-y-space-md">
+<!-- Group: Hari Ini - 24 Okt -->
+<div>
+<div class="flex items-center justify-between mb-space-xs px-1">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Hari Ini - 24 Okt
+          </h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Net: +Rp 1.472.000</span>
+</div>
+<div class="space-y-2">
+<!-- Item 1: Kopi Susu Gula Aren -->
+<article class="card-luxe rounded-2xl p-4 flex items-center justify-between hover:bg-surface-container-low transition-all active:scale-[0.99]">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary shadow-xs">
+<span class="material-symbols-outlined" data-icon="local_cafe">local_cafe</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">Kopi Susu Gula Aren</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed text-on-tertiary-fixed-variant font-bold">
+                    Self Reward 🧋
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">14:20 • QRIS</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-financial-number-md text-financial-number-md text-error font-bold">-Rp 28.000</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Berhasil</p>
+</div>
+</article>
+<!-- Item 2: Transfer Masuk dari Klien -->
+<article class="card-luxe rounded-2xl p-4 flex items-center justify-between hover:bg-surface-container-low transition-all active:scale-[0.99]">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-secondary-fixed flex items-center justify-center text-secondary shadow-xs">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">Transfer Masuk dari Klien</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-secondary-fixed-dim text-on-secondary-fixed font-bold">
+                    Alhamdulillah Cuan 💸
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">11:05 • BCA VA</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-financial-number-md text-financial-number-md text-secondary font-bold">+Rp 1.500.000</p>
+<p class="font-label-sm text-label-sm text-emerald-600 font-bold">Cuan Cair</p>
+</div>
+</article>
+<!-- Item 3: Cute Journal Store -->
+<article class="card-luxe rounded-2xl p-4 flex items-center justify-between hover:bg-surface-container-low transition-all active:scale-[0.99]">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-tertiary shadow-xs">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">Cute Journal Store</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">
+                    Printilan Gemes ✨
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">09:12 • E-Wallet</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-financial-number-md text-financial-number-md text-error font-bold">-Rp 135.000</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Berhasil</p>
+</div>
+</article>
+</div>
+</div>
+<!-- Group: Kemarin - 23 Okt -->
+<div>
+<div class="flex items-center justify-between mb-space-xs px-1">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Kemarin - 23 Okt
+          </h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Net: +Rp 6.775.000</span>
+</div>
+<div class="space-y-2">
+<!-- Item 4: Gaji Bulanan -->
+<article class="card-luxe rounded-2xl p-4 flex items-center justify-between hover:bg-surface-container-low transition-all active:scale-[0.99]">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-secondary-fixed flex items-center justify-center text-secondary shadow-xs">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">Gaji Bulanan</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-secondary-container text-on-secondary-container font-bold">
+                    Gajian Asik 🎉
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">17:00 • Payroll</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-financial-number-md text-financial-number-md text-secondary font-bold">+Rp 6.950.000</p>
+<p class="font-label-sm text-label-sm text-emerald-600 font-bold">Masuk Rekening</p>
+</div>
+</article>
+<!-- Item 5: Belanja Skincare -->
+<article class="card-luxe rounded-2xl p-4 flex items-center justify-between hover:bg-surface-container-low transition-all active:scale-[0.99]">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-tertiary shadow-xs">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold text-base leading-tight">Belanja Skincare</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-container text-on-tertiary-container font-bold">
+                    Glow Up 🧴
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">15:45 • Kartu Debit</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-financial-number-md text-financial-number-md text-error font-bold">-Rp 175.000</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Berhasil</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Tombol Unduh Laporan Gaul -->
+<section class="pt-space-sm pb-space-lg flex justify-center">
+<button class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-primary/30 bg-surface-container-low hover:bg-surface-container text-primary font-headline-sm text-sm font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="description">description</span>
+        Download Rekap PDF Cantik 📄
+      </button>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Anchored) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-mobile py-space-xs bg-surface shadow-md border-0">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs active:scale-95 transition-transform duration-150" href="#home">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- Budgets -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs active:scale-95 transition-transform duration-150" href="#budgets">
+<span class="material-symbols-outlined" data-icon="savings">savings</span>
+<span class="font-label-sm text-label-sm mt-0.5">Budgets</span>
+</a>
+<!-- Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs active:scale-95 transition-transform duration-150" href="#cards">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-label-sm text-label-sm mt-0.5">Cards</span>
+</a>
+<!-- Settings (ACTIVE for Appearance & Theme / Analisis Detail Context) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-space-md py-space-xs active:scale-95 transition-transform duration-150" href="#settings">
+<span class="material-symbols-outlined fill-icon" data-icon="palette" style="font-variation-settings: 'FILL' 1;">palette</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-bold">Settings</span>
+</a>
+</nav>
+</body></html>

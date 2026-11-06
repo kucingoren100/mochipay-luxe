@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Download Riwayat CSV - Pastel Luxe</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Outfit & Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Outfit:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#e7dff0",
+            "surface-container-highest": "#e7dff0",
+            "primary": "#655689",
+            "on-error-container": "#93000a",
+            "primary-container": "#b8a7e0",
+            "inverse-surface": "#332e3b",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#1d1a25",
+            "surface-tint": "#655689",
+            "on-secondary-fixed": "#210f48",
+            "outline-variant": "#cac4cf",
+            "tertiary-container": "#e599bf",
+            "on-primary-fixed-variant": "#4d3f70",
+            "on-tertiary-fixed-variant": "#6e3254",
+            "on-secondary-fixed-variant": "#4e3d76",
+            "on-surface-variant": "#49454e",
+            "error": "#ba1a1a",
+            "surface-container-high": "#ede5f5",
+            "secondary-fixed-dim": "#d0bcff",
+            "on-primary-fixed": "#201242",
+            "inverse-on-surface": "#f6eefe",
+            "tertiary-fixed-dim": "#feafd6",
+            "surface-bright": "#fef7ff",
+            "tertiary-fixed": "#ffd8e9",
+            "surface": "#fef7ff",
+            "on-tertiary-fixed": "#390527",
+            "secondary": "#665590",
+            "secondary-container": "#d0bcff",
+            "tertiary": "#894a6c",
+            "primary-fixed-dim": "#cfbef8",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#e9ddff",
+            "on-tertiary-container": "#692e50",
+            "on-background": "#1d1a25",
+            "surface-dim": "#dfd7e7",
+            "on-secondary-container": "#5a4983",
+            "on-primary-container": "#493b6c",
+            "background": "#fef7ff",
+            "surface-container": "#f3ebfb",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#e9ddff",
+            "surface-container-low": "#f9f1ff",
+            "inverse-primary": "#cfbef8",
+            "outline": "#7a757f",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "margin-mobile": "1rem",
+            "space-md": "1rem",
+            "space-xxl": "3rem",
+            "space-xxs": "0.125rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "financial-number-md": ["Outfit"],
+            "body-lg": ["Manrope"],
+            "label-md": ["Manrope"],
+            "headline-md": ["Outfit"],
+            "display-lg": ["Outfit"],
+            "body-md": ["Manrope"],
+            "headline-sm": ["Outfit"],
+            "financial-number-lg": ["Outfit"],
+            "body-sm": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "headline-lg": ["Outfit"],
+            "display-lg-mobile": ["Outfit"]
+          },
+          "fontSize": {
+            "financial-number-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "financial-number-lg": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Ambient cloud elevation shadows */
+    .shadow-cloud-card {
+      box-shadow: 0px 4px 20px -2px rgba(184, 167, 224, 0.22), 0px 1px 3px 0px rgba(46, 42, 54, 0.04);
+    }
+    .shadow-cloud-cta {
+      box-shadow: 0px 8px 24px -2px rgba(184, 167, 224, 0.45);
+    }
+    .inset-soft-input {
+      box-shadow: inset 0px 2px 4px 0px rgba(46, 42, 54, 0.05);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex justify-center items-start">
+<!-- Mobile Device Shell Frame (Capped at 430px for authentic smartphone preview) -->
+<div class="w-full max-w-[440px] min-h-screen bg-background flex flex-col relative pb-10">
+<!-- Top Navigation Anchor (Synthesizes Shared TopAppBar specs) -->
+<header class="bg-surface text-primary flex justify-between items-center w-full px-space-md py-space-sm h-16 sticky top-0 z-40 shadow-sm">
+<button aria-label="Kembali" class="hover:bg-surface-container-high rounded-full transition-colors active:scale-95 transition-transform duration-150 p-space-xs flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center text-center">
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Download Riwayat CSV</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Laporan cuan &amp; jajan format tabel (.csv)</span>
+</div>
+<button aria-label="Bantuan &amp; Petunjuk" class="hover:bg-surface-container-high rounded-full transition-colors active:scale-95 transition-transform duration-150 p-space-xs flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</header>
+<!-- Main Content Container with Disciplined Spacing & Fluid Baseline -->
+<main class="flex-1 px-space-md pt-space-sm pb-space-xl flex flex-col gap-y-space-md">
+<!-- 1. Hero Delight Banner Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-primary-container/30 shadow-cloud-card relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-primary-fixed/30 blur-xl pointer-events-none"></div>
+<div class="flex items-start gap-x-space-md relative z-10">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center border border-primary-container/40 shrink-0">
+<span class="text-2xl leading-none">📊</span>
+</div>
+<div class="flex flex-col gap-y-1">
+<div class="flex items-center gap-x-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">Siap diolah di Excel / Sheets! ✨</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Ekspor catatan sat-set buat backup berkala, hitung tabungan di laptop, atau pantau cashflow bareng bestie.
+            </p>
+</div>
+</div>
+</section>
+<!-- 2. Rentang Waktu Section -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-primary-container/20 shadow-cloud-card flex flex-col gap-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-x-1.5">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Pilih Rentang Waktu 🗓️</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-semibold">Sat-Set</span>
+</div>
+<!-- Chips Grid / Wrap -->
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<!-- Active Chip: Lavender Dream (#b8a7e0) with on-primary-container contrast -->
+<button class="flex items-center justify-center gap-x-1.5 py-2.5 px-3 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold border border-primary/20 shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Bulan Ini (Okt 2024)</span>
+</button>
+<!-- Inactive Chip 1 -->
+<button class="flex items-center justify-center gap-x-1.5 py-2.5 px-3 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium border border-outline-variant/30 hover:bg-surface-container-high active:scale-95 transition-all">
+<span>3 Bulan Terakhir</span>
+</button>
+<!-- Inactive Chip 2 -->
+<button class="flex items-center justify-center gap-x-1.5 py-2.5 px-3 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium border border-outline-variant/30 hover:bg-surface-container-high active:scale-95 transition-all">
+<span>Tahun Ini (2024)</span>
+</button>
+<!-- Inactive Chip 3: Custom Date -->
+<button class="flex items-center justify-center gap-x-1 py-2.5 px-3 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium border border-outline-variant/30 hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Atur Tanggal 📅</span>
+</button>
+</div>
+<!-- Active Date Preview Chiplet / Island -->
+<div class="mt-1 bg-surface-container-low p-2.5 rounded-lg border border-primary-container/20 flex items-center justify-between">
+<div class="flex items-center gap-x-2">
+<span class="material-symbols-outlined text-primary text-base" data-icon="date_range">date_range</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">1 Okt 2024 - 31 Okt 2024</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold bg-surface px-2 py-0.5 rounded-full border border-primary-container/30">31 Hari</span>
+</div>
+</section>
+<!-- 3. Tipe Catatan Filter Pills -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-primary-container/20 shadow-cloud-card flex flex-col gap-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Pilih Tipe Catatan 📑</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Filter Aliran</span>
+</div>
+<div class="flex flex-wrap gap-2 pt-1">
+<!-- Active Filter Pill -->
+<button class="px-3.5 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold flex items-center gap-1.5 border border-primary/20 shadow-sm active:scale-95 transition-transform">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+            Semua Transaksi
+          </button>
+<!-- Inactive Filter Pill: Pengeluaran -->
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high border border-outline-variant/30 flex items-center gap-1 active:scale-95 transition-transform">
+<span>Hanya Pengeluaran 💸</span>
+</button>
+<!-- Inactive Filter Pill: Pemasukan -->
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high border border-outline-variant/30 flex items-center gap-1 active:scale-95 transition-transform">
+<span>Hanya Pemasukan 💰</span>
+</button>
+<!-- Inactive Filter Pill: Transfer -->
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high border border-outline-variant/30 flex items-center gap-1 active:scale-95 transition-transform">
+<span>Transfer Dompet 🔁</span>
+</button>
+</div>
+</section>
+<!-- 4. Pilih Akun / Dompet -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-primary-container/20 shadow-cloud-card flex flex-col gap-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Pilih Akun / Dompet 👛</h2>
+<span class="font-label-sm text-label-sm text-primary font-semibold">3 Terpilih</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg border border-primary-container/30 flex items-center justify-between cursor-pointer hover:bg-surface-container-high transition-colors active:scale-[0.99]">
+<div class="flex items-center gap-x-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Semua Akun &amp; Dompet</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">BCA Utama, Celengan Impian, E-Wallet</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+</div>
+</section>
+<!-- 5. Kolom Data CSV Checklist -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-primary-container/20 shadow-cloud-card flex flex-col gap-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-x-1.5">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Kolom Data CSV ⚙️</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Lengkap &amp; Rapi</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant -mt-1">
+          Struktur header standar yang siap dibuka langsung tanpa error encoding:
+        </p>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<!-- Column Chip 1 -->
+<div class="flex items-center gap-x-2 p-2 rounded-lg bg-surface-container-low border border-primary-container/20">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_box" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-md text-label-md text-on-surface">Tanggal &amp; Jam</span>
+</div>
+<!-- Column Chip 2 -->
+<div class="flex items-center gap-x-2 p-2 rounded-lg bg-surface-container-low border border-primary-container/20">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_box" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-md text-label-md text-on-surface">Kategori Transaksi</span>
+</div>
+<!-- Column Chip 3 -->
+<div class="flex items-center gap-x-2 p-2 rounded-lg bg-surface-container-low border border-primary-container/20">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_box" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-md text-label-md text-on-surface">Tipe (Masuk/Keluar)</span>
+</div>
+<!-- Column Chip 4 -->
+<div class="flex items-center gap-x-2 p-2 rounded-lg bg-surface-container-low border border-primary-container/20">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_box" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-md text-label-md text-on-surface">Nominal (IDR)</span>
+</div>
+<!-- Column Chip 5 -->
+<div class="flex items-center gap-x-2 p-2 rounded-lg bg-surface-container-low border border-primary-container/20">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_box" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-md text-label-md text-on-surface">Catatan Santai</span>
+</div>
+<!-- Column Chip 6 -->
+<div class="flex items-center gap-x-2 p-2 rounded-lg bg-surface-container-low border border-primary-container/20">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_box" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_box</span>
+<span class="font-label-md text-label-md text-on-surface">Dompet Sumber</span>
+</div>
+</div>
+</section>
+<!-- 6. Pratinjau Ringkasan File Card (Bento Style Preview) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-primary-container/30 shadow-cloud-card flex flex-col gap-y-space-sm relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-x-1.5">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Pratinjau Ringkasan File 📄</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold">Auto-Sync</span>
+</div>
+<!-- File Metadata Pill Tag -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container border border-primary-container/20">
+<div class="flex items-center gap-x-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="description">description</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">riwayat-cuan-okt2024.csv</span>
+</div>
+<div class="flex items-center gap-x-1.5 shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-medium">14.2 KB</span>
+</div>
+</div>
+<!-- 2-Column Summary Bento Grid -->
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<!-- Total Masuk (Soft Pastel Mint) -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-primary-container/20 flex flex-col gap-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Pemasukan Bulan Ini
+            </span>
+<span class="font-financial-number-md text-financial-number-md text-primary font-bold">
+              +Rp 8.500.000
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">12 transaksi masuk</span>
+</div>
+<!-- Total Keluar (Soft Pastel Coral / Blush) -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-primary-container/20 flex flex-col gap-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              Pengeluaran Bulan Ini
+            </span>
+<span class="font-financial-number-md text-financial-number-md text-tertiary font-bold">
+              -Rp 3.420.000
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">36 transaksi jajan</span>
+</div>
+</div>
+<!-- Row count indicator -->
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1 pt-1">
+<span>Total Baris Data:</span>
+<span class="font-semibold text-on-surface">48 Transaksi Tercatat</span>
+</div>
+</section>
+<!-- 7. Action CTA Buttons -->
+<section class="flex flex-col gap-y-space-sm pt-2">
+<!-- Primary Action Button: Pill Shape, Soft Lavender Ceramic Feel -->
+<button class="w-full py-3.5 px-space-md rounded-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-x-2 shadow-cloud-cta active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="download">download</span>
+<span>Download File CSV Sekarang 📥</span>
+</button>
+<!-- Secondary Action Button: Ghost Pill Frosted -->
+<button class="w-full py-3 px-space-md rounded-full bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold border border-primary-container/40 flex items-center justify-center gap-x-2 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="mail">mail</span>
+<span>Kirim ke Email Saya ✉️</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant pt-1">
+          🔒 Data finansial kamu aman &amp; dienkripsi dengan standar perbankan.
+        </p>
+</section>
+</main>
+</div>
+</body></html>

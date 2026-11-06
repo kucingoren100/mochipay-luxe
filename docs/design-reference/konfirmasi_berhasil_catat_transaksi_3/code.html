@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Catat Transaksi Sat-Set | Konfirmasi Pemasukan</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Quicksand:wght@600;700&amp;family=Outfit:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-theme">
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .font-cute {
+      font-family: 'Quicksand', cursive, sans-serif;
+    }
+    .font-outfit {
+      font-family: 'Outfit', sans-serif;
+    }
+    /* Hide scrollbars for slick mobile view */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Receipt zigzag scalloped edge */
+    .receipt-scallop {
+      background: radial-gradient(circle, transparent, transparent 5px, #ffffff 5px, #ffffff);
+      background-size: 14px 10px;
+    }
+  </style>
+</head>
+<body class="bg-[#fcedd8] min-h-screen flex items-center justify-center p-0 md:p-6 text-slate-800">
+<!-- BEGIN: MobileDeviceFrame -->
+<main class="w-full max-w-[430px] h-screen md:h-[932px] bg-[#fffaf3] md:rounded-[52px] shadow-2xl relative flex flex-col overflow-hidden border-0 md:border-[10px] md:border-[#221f20]" data-purpose="mobile-screen-wrapper">
+<!-- BEGIN: iOSStatusBar -->
+<header class="w-full pt-3 px-7 pb-2 flex justify-between items-center z-30 select-none" data-purpose="ios-status-bar">
+<!-- Time -->
+<span class="text-[15px] font-bold tracking-tight text-slate-900 font-cute">09:15</span>
+<!-- Dynamic Island / Sensor Notch Placeholder -->
+<div class="w-24 h-4 bg-transparent hidden md:block rounded-full"></div>
+<!-- Status Icons -->
+<div class="flex items-center space-x-2 text-slate-900 text-xs">
+<!-- Cellular Signal -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.36 19.58 10.63 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 2c3.87 0 7 3.13 7 7s-3.13 7-7 7-7-3.13-7-7 3.13-7 7-7z" opacity="0"></path>
+<rect height="5" rx="1" width="3" x="2" y="16"></rect>
+<rect height="9" rx="1" width="3" x="7" y="12"></rect>
+<rect height="13" rx="1" width="3" x="12" y="8"></rect>
+<rect height="17" rx="1" width="3" x="17" y="4"></rect>
+</svg>
+<!-- Wifi -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.55 0 6.77 1.42 9.15 3.73L12 18.47 2.85 11.23C5.23 8.92 8.45 7.5 12 7.5z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="w-6 h-3 border border-slate-900 rounded-sm p-[1.5px] flex items-center relative">
+<div class="h-full bg-slate-900 rounded-[1px] w-[75%]"></div>
+<div class="w-[2px] h-1.5 bg-slate-900 absolute -right-[3.5px] rounded-r-xs"></div>
+</div>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: TopNavigation (Set to Pemasukan Tab) -->
+<nav class="px-5 py-2 flex items-center gap-3 z-20" data-purpose="top-navigation">
+<!-- Back Button -->
+<button aria-label="Kembali" class="w-9 h-9 rounded-full bg-white/80 shadow-sm border border-stone-200/60 flex items-center justify-center text-slate-700 hover:bg-stone-100 active:scale-95 transition-transform" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Segmented Control Tabs -->
+<div class="flex-1 bg-[#efe7db]/70 p-1 rounded-full flex text-xs font-semibold text-stone-600 shadow-inner" data-purpose="segmented-tabs">
+<button class="flex-1 py-1.5 rounded-full text-stone-500 hover:text-stone-700 text-center transition-all" type="button">
+          Pengeluaran
+        </button>
+<button class="flex-1 py-1.5 rounded-full bg-emerald-500 text-white font-bold shadow-sm text-center transition-all" type="button">
+          Pemasukan
+        </button>
+<button class="flex-1 py-1.5 rounded-full text-stone-500 hover:text-stone-700 text-center transition-all" type="button">
+          Transfer
+        </button>
+</div>
+</nav>
+<!-- END: TopNavigation -->
+<!-- BEGIN: CategoryScrollArea (Background Screen) -->
+<section class="flex-1 overflow-y-auto px-4 pt-2 pb-56 no-scrollbar" data-purpose="category-grid-section">
+<div class="flex items-center justify-between mb-2.5 px-1">
+<h2 class="text-xs font-bold uppercase tracking-wider text-emerald-600/80">Kategori Cuan &amp; Pemasukan 💰</h2>
+<span class="text-[11px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Auto-alokasi aktif</span>
+</div>
+<!-- Categories Grid: Pemasukan categories -->
+<div class="grid grid-cols-3 gap-2.5" data-purpose="category-list">
+<!-- Item 1: Gaji Pokok (Active) -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#dcf7ea] border-2 border-emerald-500 shadow-sm active:scale-95 transition-all text-left group ring-2 ring-emerald-200" type="button">
+<span class="text-2xl drop-shadow-sm group-hover:scale-110 transition-transform">💼</span>
+<span class="text-xs font-bold text-stone-800 leading-tight">Gaji Pokok</span>
+</button>
+<!-- Item 2: Bonus & THR -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#feeed1] border border-amber-100 hover:border-amber-300 active:scale-95 transition-all text-left" type="button">
+<span class="text-2xl drop-shadow-sm">🎁</span>
+<span class="text-xs font-semibold text-stone-700 leading-tight">Bonus &amp; THR</span>
+</button>
+<!-- Item 3: Freelance / Proyek -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#dcf4fe] border border-sky-100 hover:border-sky-300 active:scale-95 transition-all text-left" type="button">
+<span class="text-2xl drop-shadow-sm">💻</span>
+<span class="text-xs font-semibold text-stone-700 leading-tight">Freelance</span>
+</button>
+<!-- Item 4: Investasi & Saham -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#fee6c9] border border-orange-100 hover:border-orange-300 active:scale-95 transition-all text-left" type="button">
+<span class="text-2xl drop-shadow-sm">📈</span>
+<span class="text-xs font-semibold text-stone-700 leading-tight">Investasi</span>
+</button>
+<!-- Item 5: Jualan Online -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#fbead2] border border-amber-100 hover:border-amber-300 active:scale-95 transition-all text-left" type="button">
+<span class="text-2xl drop-shadow-sm">🛍️</span>
+<span class="text-xs font-semibold text-stone-700 leading-tight">Jualan Online</span>
+</button>
+<!-- Item 6: Cashback / Hadiah -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#f2e2fc] border border-purple-100 hover:border-purple-300 active:scale-95 transition-all text-left" type="button">
+<span class="text-2xl drop-shadow-sm">🎟️</span>
+<span class="text-xs font-semibold text-stone-700 leading-tight">Cashback</span>
+</button>
+<!-- Item 7: Hasil Sewa -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#dcf1fd] border border-sky-100 hover:border-sky-300 active:scale-95 transition-all text-left" type="button">
+<span class="text-2xl drop-shadow-sm">🏡</span>
+<span class="text-xs font-semibold text-stone-700 leading-tight">Sewa Properti</span>
+</button>
+<!-- Item 8: Royalti / Konten -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#fde1f5] border border-pink-100 hover:border-pink-300 active:scale-95 transition-all text-left" type="button">
+<span class="text-2xl drop-shadow-sm">🎨</span>
+<span class="text-xs font-semibold text-stone-700 leading-tight">Royalti Konten</span>
+</button>
+<!-- Item 9: Uang Saku / Tip -->
+<button class="flex items-center gap-2 p-2 rounded-2xl bg-[#daf6ea] border border-emerald-100 hover:border-emerald-300 active:scale-95 transition-all text-left" type="button">
+<span class="text-2xl drop-shadow-sm">💵</span>
+<span class="text-xs font-semibold text-stone-700 leading-tight">Uang Tip</span>
+</button>
+</div>
+</section>
+<!-- END: CategoryScrollArea -->
+<!-- BEGIN: CalculatorAndInputDrawer -->
+<div class="absolute bottom-0 left-0 right-0 bg-[#fbf6ec]/95 backdrop-blur-md pt-2 pb-6 px-4 border-t border-[#eeddc8] rounded-t-[36px] shadow-[0_-10px_35px_rgba(0,0,0,0.06)] z-30" data-purpose="calculator-drawer">
+<!-- Drawer Pull Handle Indicator -->
+<div class="w-10 h-1 bg-stone-300 rounded-full mx-auto mb-2 opacity-60"></div>
+<!-- Input Display Bar (Amount + Remark) -->
+<div class="grid grid-cols-12 gap-2 mb-2.5 items-stretch" data-purpose="input-preview-bar">
+<!-- Nominal Display Field -->
+<div class="col-span-7 bg-[#efe6d5]/70 rounded-2xl px-3.5 py-2 border border-stone-200/50 flex flex-col justify-center">
+<span class="text-[10px] uppercase font-bold text-stone-400 tracking-wider">Jumlah Pemasukan</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-xs font-bold text-emerald-600">Rp</span>
+<span class="text-xl font-extrabold text-emerald-700 tracking-tight font-cute">6.500.000</span>
+<span class="w-1.5 h-4 bg-emerald-500 animate-pulse rounded-full ml-0.5"></span>
+</div>
+</div>
+<!-- Catatan / Remark Display Field -->
+<div class="col-span-5 bg-[#efe6d5]/70 rounded-2xl px-3 py-2 border border-stone-200/50 flex flex-col justify-center">
+<span class="text-[10px] uppercase font-bold text-stone-400 tracking-wider">Catatan</span>
+<input class="bg-transparent border-0 p-0 text-xs font-medium text-stone-700 placeholder:text-stone-400 focus:ring-0 truncate" placeholder="Catatan cuan..." type="text" value="Transfer Payroll Kantor"/>
+</div>
+</div>
+<!-- Numeric Keypad and Quick Ledger Options -->
+<div class="grid grid-cols-12 gap-2" data-purpose="keypad-matrix">
+<!-- Keypad Numbers & Math (9 columns) -->
+<div class="col-span-9 grid grid-cols-4 gap-2 text-stone-800 font-bold" data-purpose="numeric-buttons">
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">1</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">2</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">3</button>
+<button class="h-11 rounded-2xl bg-[#ece1cf] hover:bg-[#e4d6bf] text-lg text-stone-700 shadow-sm flex items-center justify-center active:scale-95 transition-all" type="button">＋</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">4</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">5</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">6</button>
+<button class="h-11 rounded-2xl bg-[#ece1cf] hover:bg-[#e4d6bf] text-lg text-stone-700 shadow-sm flex items-center justify-center active:scale-95 transition-all" type="button">－</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">7</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">8</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">9</button>
+<button aria-label="Hapus Digit" class="h-11 rounded-2xl bg-[#ece1cf] hover:bg-[#e4d6bf] text-stone-700 shadow-sm flex items-center justify-center active:scale-95 transition-all" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414-6.414A2 2 0 0110.828 5H20a2 2 0 012 2v10a2 2 0 01-2 2h-9.172a2 2 0 01-1.414-.586L3 12z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">0</button>
+<button class="h-11 rounded-2xl bg-white/90 hover:bg-white text-lg shadow-sm border border-stone-200/40 flex items-center justify-center active:scale-95 transition-all" type="button">000</button>
+<button class="h-11 rounded-2xl bg-[#ece1cf] hover:bg-[#e4d6bf] text-stone-700 shadow-sm flex items-center justify-center active:scale-95 transition-all" title="Multi record sat-set" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M4 12h12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<button aria-label="Simpan Transaksi" class="h-11 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-md flex items-center justify-center active:scale-95 transition-all" type="button">
+<svg class="w-6 h-6 stroke-current" fill="none" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Quick Ledger & Meta Tools -->
+<div class="col-span-3 flex flex-col gap-2" data-purpose="quick-tools">
+<button class="h-11 px-2 rounded-2xl bg-[#daf6ea] border border-emerald-200/60 shadow-xs flex items-center justify-start gap-1.5 active:scale-95 transition-all text-left" type="button">
+<span class="text-base">📅</span>
+<div class="flex flex-col leading-none">
+<span class="text-[9px] text-emerald-800/70 font-semibold uppercase">Tgl</span>
+<span class="text-[11px] font-bold text-emerald-950 truncate">Hari Ini</span>
+</div>
+</button>
+<button class="h-11 px-2 rounded-2xl bg-[#faeed8] border border-amber-200/60 shadow-xs flex items-center justify-start gap-1.5 active:scale-95 transition-all text-left" type="button">
+<span class="text-base">🧺</span>
+<div class="flex flex-col leading-none">
+<span class="text-[9px] text-amber-800/70 font-semibold uppercase">Buku</span>
+<span class="text-[11px] font-bold text-amber-950 truncate">Pribadi</span>
+</div>
+</button>
+<button class="h-11 px-2 rounded-2xl bg-[#faeed8] border border-amber-200/60 shadow-xs flex items-center justify-start gap-1.5 active:scale-95 transition-all text-left" type="button">
+<span class="text-base">👛</span>
+<div class="flex flex-col leading-none">
+<span class="text-[9px] text-amber-800/70 font-semibold uppercase">Dompet</span>
+<span class="text-[11px] font-bold text-amber-950 truncate">BCA Utama</span>
+</div>
+</button>
+<button class="h-11 px-2 rounded-2xl bg-[#dcf4fe] border border-sky-200/60 shadow-xs flex items-center justify-start gap-1.5 active:scale-95 transition-all text-left" type="button">
+<span class="text-base">🏷️</span>
+<div class="flex flex-col leading-none">
+<span class="text-[9px] text-sky-800/70 font-semibold uppercase">Tag</span>
+<span class="text-[11px] font-bold text-sky-950 truncate">Gajian</span>
+</div>
+</button>
+</div>
+</div>
+<!-- iOS Home Indicator bar -->
+<div class="w-32 h-1 bg-stone-700/80 rounded-full mx-auto mt-4" data-purpose="home-indicator"></div>
+</div>
+<!-- END: CalculatorAndInputDrawer -->
+<!-- BEGIN: ModernLuxeCuanReceiptModal (Digital Voucher / Aesthetic Receipt) -->
+<div class="absolute inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-[6px] transition-all overflow-y-auto" data-purpose="confirmation-modal">
+<!-- Receipt Container Card -->
+<div class="w-full max-w-[370px] bg-white rounded-[32px] shadow-2xl border border-stone-200/80 flex flex-col relative overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200">
+<!-- Top Pastel Glow Aura -->
+<div class="absolute -top-16 -right-16 w-36 h-36 bg-emerald-200/50 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -top-10 -left-10 w-32 h-32 bg-[#e9ddff]/60 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Header Section with Stamp & Title -->
+<div class="pt-5 px-5 pb-3 text-center flex flex-col items-center relative z-10">
+<!-- Stamp Pastel Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-[10px] font-extrabold tracking-wider uppercase shadow-xs mb-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+<span>REZEKI MASUK 💰 • CUAN TERVERIFIKASI ✨</span>
+</div>
+<!-- Celebration Icon & Title -->
+<h3 class="text-[21px] font-extrabold text-stone-800 tracking-tight font-cute flex items-center justify-center gap-1.5">
+<span>Cuan Berhasil Mendarat!</span>
+<span class="text-2xl animate-bounce">🚀</span>
+</h3>
+<p class="text-[11px] text-stone-500 font-medium leading-relaxed mt-1 px-1">
+      Horeee, pundi-pundi saldo bertambah rapi ke catatan keuanganmu! 🥂✨
+    </p>
+</div>
+<!-- Aesthetic Receipt Slip (Ticket/Struk Style) -->
+<div class="mx-3.5 bg-gradient-to-b from-[#fbfdfa] to-[#f4f9f4] border border-emerald-100 rounded-2xl relative shadow-inner overflow-hidden">
+<!-- Side Notches for Ticket Effect -->
+<div class="absolute -left-2.5 top-24 w-5 h-5 bg-white border-r border-stone-200/60 rounded-full z-20"></div>
+<div class="absolute -right-2.5 top-24 w-5 h-5 bg-white border-l border-stone-200/60 rounded-full z-20"></div>
+<!-- Amount Hero Banner -->
+<div class="pt-4 pb-3.5 px-5 text-center bg-emerald-500/[0.07] border-b border-dashed border-emerald-200/80">
+<span class="text-[10px] font-bold text-emerald-700/80 uppercase tracking-widest block mb-0.5">Total Diterima</span>
+<div class="text-[30px] font-black text-emerald-600 tracking-tight font-outfit leading-tight flex items-center justify-center gap-1">
+<span>+Rp 6.500.000</span>
+</div>
+<div class="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-white/90 border border-emerald-200 px-2 py-0.5 rounded-full mt-1.5 shadow-2xs">
+<svg class="w-3 h-3 text-emerald-500" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span>Berhasil Cair • Tanpa Potongan 🏷️</span>
+</div>
+</div>
+<!-- Receipt Details Table -->
+<div class="p-4 space-y-2.5 text-xs text-stone-600">
+<div class="flex justify-between items-center">
+<span class="text-stone-400 font-medium">Sumber</span>
+<span class="font-bold text-stone-800 flex items-center gap-1">Transfer Payroll Kantor 🏢</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-stone-400 font-medium">Masuk ke Dompet</span>
+<span class="font-bold text-stone-800 flex items-center gap-1">BCA Utama <span class="text-[11px] text-stone-500 font-normal">(•••• 8829)</span></span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-stone-400 font-medium">Kategori</span>
+<span class="font-bold text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded-md text-[11px] flex items-center gap-1">Gaji Pokok 💼</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-stone-400 font-medium">Waktu Transaksi</span>
+<span class="font-semibold text-stone-700">25 Okt 2024, 09:15 WIB</span>
+</div>
+</div>
+<!-- Mini Progress Goal Card inside receipt -->
+<div class="mx-3.5 mb-3.5 p-2.5 rounded-xl bg-white border border-emerald-200/70 shadow-2xs flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-[11px]">
+<span class="font-bold text-stone-700 flex items-center gap-1">🎯 Celengan Bulan Ini</span>
+<span class="font-extrabold text-emerald-600 font-cute">85% Tercapai! 🎉</span>
+</div>
+<div class="w-full h-2 bg-stone-100 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full w-[85%] transition-all"></div>
+</div>
+</div>
+<!-- Receipt Barcode Decoration -->
+<div class="px-5 pb-3 pt-1 border-t border-dashed border-emerald-200/70 flex flex-col items-center opacity-70">
+<div class="flex items-center justify-center gap-0.5 h-5 w-40">
+<div class="w-0.5 h-full bg-stone-400"></div>
+<div class="w-1 h-full bg-stone-500"></div>
+<div class="w-0.5 h-full bg-stone-300"></div>
+<div class="w-1.5 h-full bg-stone-600"></div>
+<div class="w-0.5 h-full bg-stone-400"></div>
+<div class="w-2 h-full bg-stone-700"></div>
+<div class="w-0.5 h-full bg-stone-300"></div>
+<div class="w-1 h-full bg-stone-500"></div>
+<div class="w-1.5 h-full bg-stone-600"></div>
+<div class="w-0.5 h-full bg-stone-400"></div>
+<div class="w-2 h-full bg-stone-700"></div>
+<div class="w-0.5 h-full bg-stone-300"></div>
+<div class="w-1 h-full bg-stone-500"></div>
+</div>
+<span class="text-[9px] font-mono tracking-widest text-stone-400 mt-1 uppercase">INV-CUAN-20241025-8829</span>
+</div>
+</div>
+<!-- Action CTA Buttons -->
+<div class="p-4 pt-3.5 flex flex-col gap-2 relative z-10">
+<!-- Primary CTA: Share Receipt (Soft Pastel Lavender/Mint gradient) -->
+<button class="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-[#655689] via-[#75669b] to-[#40916c] hover:opacity-95 text-white font-bold text-xs tracking-wide shadow-md active:scale-95 transition-all flex items-center justify-center gap-2" type="button">
+<span>Bagikan Bukti Struk Cantik 📤</span>
+</button>
+<!-- Secondary CTA: Back to Home -->
+<button class="w-full py-2 px-4 rounded-2xl bg-[#f7f4fb] hover:bg-[#ede8f5] border border-stone-200/80 text-stone-700 font-semibold text-xs shadow-2xs active:scale-95 transition-all flex items-center justify-center gap-1.5" type="button">
+<span>Kembali ke Beranda 🏠</span>
+</button>
+<!-- Text CTA: Log another transaction -->
+<button class="text-[11px] font-bold text-stone-500 hover:text-stone-800 py-1 transition-colors active:scale-95 text-center" type="button">
+      + Catat Transaksi Lagi
+    </button>
+</div>
+</div>
+</div>
+<!-- END: ModernLuxeCuanReceiptModal -->
+</main>
+<!-- END: MobileDeviceFrame -->
+</body></html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Atur Duit &amp; Impian - Kawaii Pastel Budgeting</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Outfit (Display & Financial Numbers) & Manrope (Body & Labels) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration with Design Tokens -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#ede5f5",
+            "on-tertiary": "#ffffff",
+            "inverse-on-surface": "#f6eefe",
+            "inverse-surface": "#332e3b",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#5a4983",
+            "on-error-container": "#93000a",
+            "on-surface-variant": "#49454e",
+            "on-tertiary-fixed-variant": "#6e3254",
+            "surface-bright": "#fef7ff",
+            "tertiary-container": "#e599bf",
+            "outline-variant": "#cac4cf",
+            "on-primary-container": "#493b6c",
+            "surface-container-highest": "#e7dff0",
+            "surface": "#fef7ff",
+            "primary-fixed": "#e9ddff",
+            "surface-dim": "#dfd7e7",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#692e50",
+            "tertiary-fixed": "#ffd8e9",
+            "on-secondary-fixed": "#210f48",
+            "primary-fixed-dim": "#cfbef8",
+            "inverse-primary": "#cfbef8",
+            "secondary-fixed": "#e9ddff",
+            "on-background": "#1d1a25",
+            "secondary-container": "#d0bcff",
+            "background": "#fef7ff",
+            "surface-container-low": "#f9f1ff",
+            "secondary-fixed-dim": "#d0bcff",
+            "on-primary-fixed-variant": "#4d3f70",
+            "on-tertiary-fixed": "#390527",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#201242",
+            "on-secondary-fixed-variant": "#4e3d76",
+            "outline": "#7a757f",
+            "on-primary": "#ffffff",
+            "surface-variant": "#e7dff0",
+            "surface-container": "#f3ebfb",
+            "secondary": "#665590",
+            "error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#feafd6",
+            "on-surface": "#1d1a25",
+            "surface-tint": "#655689",
+            "primary-container": "#b8a7e0",
+            "primary": "#655689",
+            "tertiary": "#894a6c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xxs": "0.125rem",
+            "margin": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xxl": "3rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Outfit"],
+            "display-lg": ["Outfit"],
+            "body-md": ["Manrope"],
+            "display-lg-mobile": ["Outfit"],
+            "label-md": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "body-sm": ["Manrope"],
+            "financial-number-md": ["Outfit"],
+            "financial-number-lg": ["Outfit"],
+            "headline-md": ["Outfit"],
+            "body-lg": ["Manrope"],
+            "headline-lg": ["Outfit"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "financial-number-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "financial-number-lg": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Kawaii Glass & Ceramic shadow tokens */
+    .kawaii-card-shadow {
+      box-shadow: 0px 4px 20px -2px rgba(184, 167, 224, 0.22), 0px 1px 3px 0px rgba(46, 42, 54, 0.04);
+    }
+    .kawaii-float-shadow {
+      box-shadow: 0px 12px 28px -4px rgba(184, 167, 224, 0.35);
+    }
+    .kawaii-inset-shadow {
+      box-shadow: inset 0px 2px 4px 0px rgba(46, 42, 54, 0.06);
+    }
+    /* Smooth bounce switch */
+    .bounce-toggle {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TOP APP BAR (Shared Component Anchor) -->
+<header class="sticky top-0 z-40 bg-surface shadow-sm transition-all duration-150">
+<div class="max-w-4xl mx-auto flex justify-between items-center w-full px-margin-mobile py-space-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Kembali" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">Atur Duit &amp; Impian</h1>
+<p class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            Mode Santai: Bulan Ini Aman!
+          </p>
+</div>
+</div>
+<!-- Action Trailing -->
+<button class="bg-primary text-on-primary hover:bg-secondary active:scale-95 transition-all duration-150 px-space-md py-space-xs rounded-full flex items-center gap-1.5 shadow-sm font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+<span>+Bikin Baru</span>
+</button>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT CANVAS -->
+<main class="max-w-4xl mx-auto px-margin-mobile pt-space-md pb-32 space-y-space-lg">
+<!-- HERO SECTION: Ringkasan Budget Bulanan Bento -->
+<section class="bg-surface-container-lowest kawaii-card-shadow rounded-[2rem] border border-outline-variant/30 p-space-lg relative overflow-hidden">
+<!-- Decorative Pastel Glow Orbs -->
+<div class="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-primary-fixed/50 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-tertiary-fixed/60 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<!-- Sisi Kiri: Angka & Status Card -->
+<div class="flex-1 w-full space-y-space-sm">
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-0.5 rounded-full font-label-sm text-label-sm inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-xs material-symbols-fill" data-icon="sparkles">arrow_back_ios_new</span>
+              Batas Jajan Bulan Ini
+            </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Periode: Okt 2024</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-financial-number-lg text-financial-number-lg font-bold text-on-surface tracking-tight">Rp 4.500.000</span>
+<span class="font-label-md text-label-md text-on-surface-variant">total limit</span>
+</div>
+<!-- Highlight Pill Status -->
+<div class="inline-flex items-center gap-2 bg-surface-container px-3.5 py-1.5 rounded-full border border-primary-container/40">
+<span class="text-base">😎</span>
+<span class="font-label-md text-label-md text-primary font-bold">Status: Masih Aman Banget, Gak Bokek!</span>
+</div>
+<!-- Quick Metrics Bar -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low p-space-sm rounded-2xl border border-outline-variant/20">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Terpakai (63%)
+              </p>
+<p class="font-financial-number-md text-financial-number-md font-bold text-tertiary mt-0.5">Rp 2.850.000</p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-2xl border border-outline-variant/20">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Sisa Aman ✨
+              </p>
+<p class="font-financial-number-md text-financial-number-md font-bold text-secondary mt-0.5">Rp 1.650.000</p>
+</div>
+</div>
+</div>
+<!-- Sisi Kanan: Circular Meter & Mascot Delight -->
+<div class="flex flex-col items-center justify-center relative w-44 h-44 shrink-0">
+<!-- Circular Progress Meter SVG -->
+<svg class="w-40 h-40 transform -rotate-90" viewbox="0 0 120 120">
+<circle cx="60" cy="60" fill="transparent" r="50" stroke="#f3ebfb" stroke-linecap="round" stroke-width="12"></circle>
+<circle cx="60" cy="60" fill="transparent" r="50" stroke="url(#lavender-gradient)" stroke-dasharray="314.159" stroke-dashoffset="116.23" stroke-linecap="round" stroke-width="12"></circle>
+<defs>
+<lineargradient id="lavender-gradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#b8a7e0"></stop>
+<stop offset="100%" stop-color="#655689"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Inside Mascot & Number -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="text-3xl animate-bounce drop-shadow-sm select-none">🐰</span>
+<span class="font-headline-sm text-headline-sm font-extrabold text-primary">63%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">terpakai</span>
+</div>
+</div>
+</div>
+<!-- Linear Micro Progress Bar -->
+<div class="mt-space-md pt-space-xs border-t border-surface-container-high/60 flex items-center justify-between text-xs text-on-surface-variant">
+<span class="font-body-sm text-body-sm">Catatan harian: Rata-rata jajan Rp 95.000 / hari</span>
+<span class="font-label-md text-label-md font-bold text-primary hover:underline cursor-pointer">Lihat Rincian Harian →</span>
+</div>
+</section>
+<!-- SECTION 1: Kategori Jajan Kamu -->
+<section class="space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+<span>Kategori Jajan Kamu</span>
+<span class="font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full">4 Kategori</span>
+</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pantau pos pengeluaran biar gak boncos di akhir bulan!</p>
+</div>
+<button class="bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md px-3.5 py-2 rounded-full border border-primary-container/30 flex items-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-base" data-icon="add_circle">add_circle</span>
+<span>+Tambah Kategori Jajan</span>
+</button>
+</div>
+<!-- Categories Grid Bento -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Kategori 1: Nongkrong & Ngopi (Peach Glow 77%) -->
+<div class="bg-surface-container-lowest kawaii-card-shadow rounded-2xl p-space-md border border-outline-variant/20 hover:border-primary-container transition-all group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-orange-100 flex items-center justify-center text-xl shadow-inner">
+                ☕
+              </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Nongkrong &amp; Ngopi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Kafe santuy &amp; kopi susu</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full">77%</span>
+</div>
+<div class="mt-space-md">
+<div class="flex justify-between items-baseline mb-1.5">
+<span class="font-financial-number-md text-financial-number-md font-bold text-on-surface">Rp 620.000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">dari Rp 800.000</span>
+</div>
+<!-- Progress Bar Pastel Peach -->
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-amber-400 transition-all duration-500" style="width: 77.5%;"></div>
+</div>
+<div class="flex justify-between items-center mt-2 text-xs">
+<span class="text-on-surface-variant font-body-sm">Sisa Rp 180.000 lagi</span>
+<span class="text-primary font-label-sm font-bold flex items-center gap-0.5 cursor-pointer hover:underline">
+                Riwayat <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Kategori 2: Belanja Lucu & Skincare (Stroberi Pink 79%) -->
+<div class="bg-surface-container-lowest kawaii-card-shadow rounded-2xl p-space-md border border-outline-variant/20 hover:border-primary-container transition-all group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-xl shadow-inner">
+                🛍️
+              </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Belanja Lucu &amp; Skincare</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Self care &amp; printilan gemes</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold bg-tertiary-container/40 text-on-tertiary-container px-2 py-0.5 rounded-full">79%</span>
+</div>
+<div class="mt-space-md">
+<div class="flex justify-between items-baseline mb-1.5">
+<span class="font-financial-number-md text-financial-number-md font-bold text-on-surface">Rp 950.000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">dari Rp 1.200.000</span>
+</div>
+<!-- Progress Bar Stroberi Pink -->
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-rose-400 transition-all duration-500" style="width: 79.1%;"></div>
+</div>
+<div class="flex justify-between items-center mt-2 text-xs">
+<span class="text-on-surface-variant font-body-sm">Sisa Rp 250.000 lagi</span>
+<span class="text-primary font-label-sm font-bold flex items-center gap-0.5 cursor-pointer hover:underline">
+                Riwayat <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Kategori 3: Makan Enak & Jajan (Matcha Green 58%) -->
+<div class="bg-surface-container-lowest kawaii-card-shadow rounded-2xl p-space-md border border-outline-variant/20 hover:border-primary-container transition-all group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-emerald-100 flex items-center justify-center text-xl shadow-inner">
+                🍕
+              </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Makan Enak &amp; Jajan</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Food delivery &amp; kulineran</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">58%</span>
+</div>
+<div class="mt-space-md">
+<div class="flex justify-between items-baseline mb-1.5">
+<span class="font-financial-number-md text-financial-number-md font-bold text-on-surface">Rp 880.000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">dari Rp 1.500.000</span>
+</div>
+<!-- Progress Bar Matcha Green -->
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-emerald-400 transition-all duration-500" style="width: 58.6%;"></div>
+</div>
+<div class="flex justify-between items-center mt-2 text-xs">
+<span class="text-emerald-700 font-body-sm font-medium">Sisa aman: Rp 620.000</span>
+<span class="text-primary font-label-sm font-bold flex items-center gap-0.5 cursor-pointer hover:underline">
+                Riwayat <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Kategori 4: Transportasi & Ojol (Sky Bunny Blue 40%) -->
+<div class="bg-surface-container-lowest kawaii-card-shadow rounded-2xl p-space-md border border-outline-variant/20 hover:border-primary-container transition-all group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-sky-100 flex items-center justify-center text-xl shadow-inner">
+                🛵
+              </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Transportasi &amp; Ojol</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bensin &amp; ride-hailing</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold bg-sky-100 text-sky-800 px-2 py-0.5 rounded-full">40%</span>
+</div>
+<div class="mt-space-md">
+<div class="flex justify-between items-baseline mb-1.5">
+<span class="font-financial-number-md text-financial-number-md font-bold text-on-surface">Rp 400.000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">dari Rp 1.000.000</span>
+</div>
+<!-- Progress Bar Sky Bunny Blue -->
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-sky-400 transition-all duration-500" style="width: 40%;"></div>
+</div>
+<div class="flex justify-between items-center mt-2 text-xs">
+<span class="text-sky-700 font-body-sm font-medium">Sisa lega: Rp 600.000</span>
+<span class="text-primary font-label-sm font-bold flex items-center gap-0.5 cursor-pointer hover:underline">
+                Riwayat <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Celengan Wishlist Impian -->
+<section class="space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Celengan Wishlist Impian 🎯</h2>
+<span class="bg-secondary text-on-secondary text-xs px-2.5 py-0.5 rounded-full font-bold">3 Goals</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Kumpulin receh jadi impian nyata</p>
+</div>
+<!-- Quick Action Pill: Nabung Otomatis Tiap Gajian with Pill Toggle -->
+<div class="inline-flex items-center justify-between gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-primary-container/30 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="text-base">💸</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Nabung Otomatis Tiap Gajian</span>
+</div>
+<!-- Kawaii Toggle Switch (Active State) -->
+<button aria-label="Toggle nabung otomatis" class="w-12 h-6 bg-secondary rounded-full p-0.5 flex items-center justify-end focus:outline-none transition-colors duration-200" id="auto-save-toggle">
+<span class="w-5 h-5 bg-white rounded-full shadow-md bounce-toggle transform"></span>
+</button>
+</div>
+</div>
+<!-- Wishlist Cards Stack -->
+<div class="space-y-space-md">
+<!-- Wishlist 1: Tiket Konser Idol Favorit (80%) -->
+<div class="bg-surface-container-lowest kawaii-card-shadow rounded-2xl p-space-lg border border-primary-container/40 relative overflow-hidden transition-all hover:border-primary">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-2xl shadow-inner">
+                🎤
+              </div>
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Tiket Konser Idol Favorit</h3>
+<span class="font-label-sm text-label-sm bg-tertiary-container/50 text-on-tertiary-container font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                    Bentar lagi kecapai 🥳
+                  </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Target tercapai sebelum tur Asia dimulai!</p>
+</div>
+</div>
+<!-- Deposit Shortcut Button -->
+<button class="bg-secondary-container hover:bg-secondary text-on-secondary-container hover:text-white px-4 py-2 rounded-full font-label-md text-label-md font-bold transition-all active:scale-95 flex items-center justify-center gap-1.5 self-start sm:self-center">
+<span class="material-symbols-outlined text-base material-symbols-fill" data-icon="add_circle">add_circle</span>
+<span>+Isi Celengan</span>
+</button>
+</div>
+<!-- Financial Figures & Progress Bar -->
+<div class="mt-4 space-y-2">
+<div class="flex flex-wrap items-baseline justify-between gap-2">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Terkumpul</span>
+<span class="font-financial-number-md text-financial-number-md font-bold text-secondary">Rp 2.800.000</span>
+<span class="font-label-md text-label-md text-on-surface-variant">/ Rp 3.500.000</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Kekurangan</span>
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary">sisa Rp 700.000 lagi!</span>
+</div>
+</div>
+<!-- Large Kawaii Progress Bar -->
+<div class="w-full h-3.5 rounded-full bg-surface-container overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-gradient-to-r from-secondary-container to-secondary transition-all duration-700" style="width: 80%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-on-surface-variant pt-1">
+<span>Progress: 80%</span>
+<span class="text-secondary font-bold">Estimasi 1x gajian lagi lunas 🎟️</span>
+</div>
+</div>
+</div>
+<!-- Wishlist 2: MacBook Air Baru Buat Ngoding (50%) -->
+<div class="bg-surface-container-lowest kawaii-card-shadow rounded-2xl p-space-lg border border-outline-variant/30 hover:border-primary-container/60 transition-all">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-indigo-100 flex items-center justify-center text-2xl shadow-inner">
+                💻
+              </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">MacBook Air Baru Buat Ngoding</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Biar coding sat-set tanpa ngelag</p>
+</div>
+</div>
+<button class="bg-surface-container hover:bg-secondary-container text-primary font-label-md text-label-md px-4 py-2 rounded-full border border-primary-container/30 transition-all active:scale-95 flex items-center justify-center gap-1.5 self-start sm:self-center">
+<span class="material-symbols-outlined text-base" data-icon="savings">savings</span>
+<span>+Setor Receh</span>
+</button>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex flex-wrap items-baseline justify-between gap-2">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Terkumpul</span>
+<span class="font-financial-number-md text-financial-number-md font-bold text-on-surface">Rp 9.000.000</span>
+<span class="font-label-md text-label-md text-on-surface-variant">/ Rp 18.000.000</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Kekurangan</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface-variant">sisa Rp 9.000.000</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-3.5 rounded-full bg-surface-container overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-primary-container transition-all duration-700" style="width: 50%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-on-surface-variant pt-1">
+<span>Progress: 50% (Setengah Jalan!)</span>
+<span class="text-primary font-bold">Rutin nabung Rp 1.5jt / bulan 🚀</span>
+</div>
+</div>
+</div>
+<!-- Wishlist 3: Dana Darurat Anti-Panik (75%) -->
+<div class="bg-surface-container-lowest kawaii-card-shadow rounded-2xl p-space-lg border border-outline-variant/30 hover:border-primary-container/60 transition-all">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-teal-100 flex items-center justify-center text-2xl shadow-inner">
+                🛡️
+              </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Dana Darurat Anti-Panik</h3>
+<span class="font-label-sm text-label-sm bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">Prioritas ✨</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pondasi finansial biar tidur nyenyak</p>
+</div>
+</div>
+<button class="bg-surface-container hover:bg-secondary-container text-primary font-label-md text-label-md px-4 py-2 rounded-full border border-primary-container/30 transition-all active:scale-95 flex items-center justify-center gap-1.5 self-start sm:self-center">
+<span class="material-symbols-outlined text-base" data-icon="lock">lock</span>
+<span>Kunci Dana</span>
+</button>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex flex-wrap items-baseline justify-between gap-2">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Terkumpul</span>
+<span class="font-financial-number-md text-financial-number-md font-bold text-teal-800">Rp 7.500.000</span>
+<span class="font-label-md text-label-md text-on-surface-variant">/ Rp 10.000.000</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Kekurangan</span>
+<span class="font-headline-sm text-headline-sm font-bold text-teal-700">sisa Rp 2.500.000</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-3.5 rounded-full bg-surface-container overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-teal-400 transition-all duration-700" style="width: 75%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-on-surface-variant pt-1">
+<span>Progress: 75%</span>
+<span class="text-teal-800 font-bold">Udah nutup 4 bulan pengeluaran pokok 🌿</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MOTIVATIONAL QUOTE CARD BANNER -->
+<div class="bg-gradient-to-r from-primary-fixed/40 via-surface-container-high to-tertiary-fixed/40 rounded-2xl p-space-md flex items-center gap-3 border border-primary-container/20">
+<span class="text-3xl select-none">✨</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-primary">Kunci Sukses Nabung Ala Kawaii Finance:</p>
+<p class="font-body-sm text-body-sm text-on-surface">"Gak apa-apa nabung sedikit tiap hari, yang penting konsisten dan gak boncos jajan boba!" 🧋</p>
+</div>
+</div>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Component Anchor) -->
+<!-- Strict Hierarchy: Current destination is 'Budgets', exactly matching tab 2 -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-mobile py-space-xs bg-surface shadow-md">
+<!-- Tab 1: Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs active:scale-95 transition-transform duration-150 group" href="#home">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- Tab 2: Budgets (ACTIVE - Exact intent match to this page) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-space-md py-space-xs active:scale-95 transition-transform duration-150" href="#budgets">
+<span class="material-symbols-outlined text-2xl material-symbols-fill" data-icon="savings">savings</span>
+<span class="font-label-sm text-label-sm font-bold mt-0.5">Budgets</span>
+</a>
+<!-- Tab 3: Cards (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs active:scale-95 transition-transform duration-150 group" href="#cards">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors" data-icon="credit_card">credit_card</span>
+<span class="font-label-sm text-label-sm mt-0.5">Cards</span>
+</a>
+<!-- Tab 4: Settings (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs active:scale-95 transition-transform duration-150 group" href="#settings">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors" data-icon="palette">palette</span>
+<span class="font-label-sm text-label-sm mt-0.5">Settings</span>
+</a>
+</nav>
+<!-- Interactive JavaScript for micro-delight toggle switch -->
+<script>
+    const autoSaveToggle = document.getElementById('auto-save-toggle');
+    if (autoSaveToggle) {
+      let isEnabled = true;
+      autoSaveToggle.addEventListener('click', () => {
+        isEnabled = !isEnabled;
+        if (isEnabled) {
+          autoSaveToggle.classList.remove('bg-surface-dim', 'justify-start');
+          autoSaveToggle.classList.add('bg-secondary', 'justify-end');
+        } else {
+          autoSaveToggle.classList.remove('bg-secondary', 'justify-end');
+          autoSaveToggle.classList.add('bg-surface-dim', 'justify-start');
+        }
+      });
+    }
+  </script>
+</body></html>

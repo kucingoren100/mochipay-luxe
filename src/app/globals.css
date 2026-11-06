@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+html[data-palette="lavender"] {
+  --primary: #b8a7e0;
+  --secondary: #7d6ba8;
+  --tertiary: #f4a6cd;
+  --surface-light: #faf8fc;
+  --card-light: #ffffff;
+  --fg-light: #2e2a36;
+  --surface-dark: #1d1a25;
+  --card-dark: #282333;
+  --fg-dark: #f6f1ff;
+  --shadow-rgb: 184, 167, 224;
+  --on-primary: #2a2438;
+}
+
+html[data-palette="strawberry"] {
+  --primary: #f9b3ce;
+  --secondary: #9e4d6e;
+  --tertiary: #ffd8e9;
+  --surface-light: #fff9fa;
+  --card-light: #ffffff;
+  --fg-light: #390527;
+  --surface-dark: #26151e;
+  --card-dark: #361e2b;
+  --fg-dark: #ffe8f1;
+  --shadow-rgb: 249, 179, 206;
+  --on-primary: #390527;
+}
+
+html[data-palette="peachy"] {
+  --primary: #f8b896;
+  --secondary: #a85a32;
+  --tertiary: #ffe2d1;
+  --surface-light: #fffbf7;
+  --card-light: #ffffff;
+  --fg-light: #382216;
+  --surface-dark: #261a14;
+  --card-dark: #36251d;
+  --fg-dark: #ffe8dc;
+  --shadow-rgb: 248, 184, 150;
+  --on-primary: #382216;
+}
+
+html[data-palette="matcha"] {
+  --primary: #98d8aa;
+  --secondary: #416d4e;
+  --tertiary: #d2f3dc;
+  --surface-light: #f8faf6;
+  --card-light: #ffffff;
+  --fg-light: #1a2e21;
+  --surface-dark: #142219;
+  --card-dark: #1e3125;
+  --fg-dark: #e7ffef;
+  --shadow-rgb: 152, 216, 170;
+  --on-primary: #1a2e21;
+}
+
+html[data-palette="sky"] {
+  --primary: #99c8f5;
+  --secondary: #3f6e9c;
+  --tertiary: #d6ebff;
+  --surface-light: #f7fbff;
+  --card-light: #ffffff;
+  --fg-light: #17283b;
+  --surface-dark: #131e2b;
+  --card-dark: #1c2c3e;
+  --fg-dark: #e7f3ff;
+  --shadow-rgb: 153, 200, 245;
+  --on-primary: #17283b;
+}
+
+html[data-palette="cocoa"] {
+  --primary: #cbb094;
+  --secondary: #6e5540;
+  --tertiary: #efe3d5;
+  --surface-light: #fcfaf7;
+  --card-light: #ffffff;
+  --fg-light: #2e241c;
+  --surface-dark: #211b16;
+  --card-dark: #302720;
+  --fg-dark: #f6efe6;
+  --shadow-rgb: 203, 176, 148;
+  --on-primary: #2e241c;
+}
+
+html[data-palette="sienna-artsy"] {
+  --primary: #e9866a;
+  --secondary: #9c4a32;
+  --tertiary: #f2c879;
+  --surface-light: #fff8f2;
+  --card-light: #ffffff;
+  --fg-light: #33201a;
+  --surface-dark: #221613;
+  --card-dark: #31211b;
+  --fg-dark: #ffede2;
+  --shadow-rgb: 233, 134, 106;
+  --on-primary: #33201a;
+}
+
+html[data-theme="light"],
+html:not([data-theme]) {
+  --surface: var(--surface-light);
+  --card: var(--card-light);
+  --foreground: var(--fg-light);
+  --muted: color-mix(in srgb, var(--fg-light) 68%, transparent);
+  --inset: color-mix(in srgb, var(--primary) 18%, var(--card-light));
+  --line: rgba(var(--shadow-rgb), 0.28);
+  --track: color-mix(in srgb, var(--primary) 42%, white);
+  --icon-stroke: #2e2a36;
+  --icon-sticker-halo: rgba(255, 255, 255, 0.9);
+}
+
+html[data-theme="dark"] {
+  --surface: var(--surface-dark);
+  --card: var(--card-dark);
+  --foreground: var(--fg-dark);
+  --muted: color-mix(in srgb, var(--fg-dark) 72%, transparent);
+  --inset: color-mix(in srgb, var(--primary) 14%, var(--card-dark));
+  --line: rgba(var(--shadow-rgb), 0.32);
+  --track: color-mix(in srgb, var(--primary) 28%, black);
+  --on-primary: #1d1824;
+  --icon-stroke: #f6eefe;
+  --icon-sticker-halo: rgba(255, 255, 255, 0.16);
+}
+
+:root {
+  --income: #58b392;
+  --expense: #ea7b7b;
+  --warning: #e8aa42;
+
+  --icon-primary: var(--primary);
+  --icon-secondary: var(--secondary);
+  --icon-tertiary: var(--tertiary);
+  --icon-badge-bg: color-mix(in srgb, var(--primary) 18%, var(--card));
+}
+
+.kawaii-icon svg *,
+.kawaii-mascot svg * {
+  transition: fill 0.35s ease, stroke 0.35s ease, background-color 0.35s ease;
+}
+
+.kawaii-icon svg [data-theme-fill="primary"] { fill: var(--icon-primary); }
+.kawaii-icon svg [data-theme-fill="secondary"] { fill: var(--icon-secondary); }
+.kawaii-icon svg [data-theme-fill="tertiary"] { fill: var(--icon-tertiary); }
+.kawaii-icon svg [data-theme-fill="badge"] { fill: var(--icon-badge-bg); }
+
+.kawaii-icon-override svg { width: 100%; height: 100%; display: block; }
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--foreground);
+  font-family: var(--font-manrope), Manrope, sans-serif;
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+.tnum {
+  font-family: var(--font-outfit), Outfit, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.03em;
+}
+
+html.hc-nums .tnum {
+  font-weight: 800;
+  color: var(--foreground);
+}
+
+.cloud-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  box-shadow: 0px 4px 16px -2px rgba(var(--shadow-rgb), 0.18), 0px 1px 2px rgba(46, 42, 54, 0.04);
+}
+
+.inset-field {
+  background: var(--inset);
+  box-shadow: inset 0px 2px 4px rgba(46, 42, 54, 0.05);
+  border-radius: 1rem;
+  border: 1px solid transparent;
+}
+
+.inset-field:focus,
+.inset-field:focus-within {
+  background: var(--card);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--shadow-rgb), 0.28);
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0px 4px 12px rgba(var(--shadow-rgb), 0.4);
+}
+
+.btn-primary:active { transform: translateY(1px); box-shadow: none; }
+
+.btn-ghost {
+  background: rgba(var(--shadow-rgb), 0.16);
+  color: var(--secondary);
+  border: 1px solid rgba(var(--shadow-rgb), 0.32);
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.btn-danger {
+  background: color-mix(in srgb, var(--expense) 16%, var(--card));
+  color: #9c3d4a;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+html[data-theme="dark"] .btn-danger { color: #ffc1c1; }
+
+.chip-income {
+  background: color-mix(in srgb, var(--income) 18%, transparent);
+  color: #1f7a58;
+}
+
+html[data-theme="dark"] .chip-income { color: #b7f0d6; }
+
+.chip-expense {
+  background: color-mix(in srgb, var(--expense) 18%, transparent);
+  color: #9c3d4a;
+}
+
+html[data-theme="dark"] .chip-expense { color: #ffc7c7; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@keyframes pop-in {
+  from { transform: translateY(8px) scale(0.98); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}

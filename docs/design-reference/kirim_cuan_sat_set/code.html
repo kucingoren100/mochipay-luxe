@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kirim Cuan Sat-Set 💸</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Outfit:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Verbatim Tailwind Theme Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#5a4983",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#49454e",
+            "on-tertiary-fixed-variant": "#6e3254",
+            "inverse-on-surface": "#f6eefe",
+            "surface-tint": "#655689",
+            "secondary-container": "#d0bcff",
+            "on-primary": "#ffffff",
+            "on-surface": "#1d1a25",
+            "secondary-fixed-dim": "#d0bcff",
+            "secondary": "#665590",
+            "primary-fixed-dim": "#cfbef8",
+            "on-primary-fixed": "#201242",
+            "inverse-primary": "#cfbef8",
+            "surface": "#fef7ff",
+            "surface-variant": "#e7dff0",
+            "surface-dim": "#dfd7e7",
+            "on-background": "#1d1a25",
+            "surface-container-high": "#ede5f5",
+            "tertiary-container": "#e599bf",
+            "tertiary": "#894a6c",
+            "primary-container": "#b8a7e0",
+            "on-tertiary-fixed": "#390527",
+            "primary-fixed": "#e9ddff",
+            "primary": "#655689",
+            "on-primary-fixed-variant": "#4d3f70",
+            "surface-bright": "#fef7ff",
+            "surface-container-low": "#f9f1ff",
+            "on-secondary-fixed": "#210f48",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#cac4cf",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#692e50",
+            "outline": "#7a757f",
+            "tertiary-fixed-dim": "#feafd6",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#e9ddff",
+            "on-secondary-fixed-variant": "#4e3d76",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#332e3b",
+            "surface-container-highest": "#e7dff0",
+            "background": "#fef7ff",
+            "tertiary-fixed": "#ffd8e9",
+            "surface-container": "#f3ebfb",
+            "on-error": "#ffffff",
+            "on-primary-container": "#493b6c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xxl": "3rem",
+            "margin-mobile": "1rem",
+            "margin": "1.5rem",
+            "space-xxs": "0.125rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Outfit"],
+            "display-lg-mobile": ["Outfit"],
+            "body-lg": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "label-md": ["Manrope"],
+            "display-lg": ["Outfit"],
+            "headline-sm": ["Outfit"],
+            "body-sm": ["Manrope"],
+            "body-md": ["Manrope"],
+            "financial-number-lg": ["Outfit"],
+            "financial-number-md": ["Outfit"],
+            "headline-lg": ["Outfit"]
+          },
+          "fontSize": {
+            "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "500"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "financial-number-lg": ["34px", {"lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "financial-number-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "headline-sm-mobile": ["16px", {"lineHeight": "22px", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .ceramic-card {
+      background: #FFFFFF;
+      box-shadow: 0px 4px 16px -2px rgba(184, 167, 224, 0.18), 0px 1px 2px 0px rgba(46, 42, 54, 0.04);
+      border: 1px solid rgba(184, 167, 224, 0.25);
+    }
+    .inset-soft {
+      background: #F3EFF9;
+      box-shadow: inset 0px 2px 4px 0px rgba(46, 42, 54, 0.05);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- ================= TOP APP BAR (Shared Component Anchor) ================= -->
+<header class="sticky top-0 z-40 bg-surface dark:bg-surface shadow-sm dark:shadow-none transition-shadow">
+<div class="flex justify-between items-center w-full px-margin-mobile py-space-sm max-w-4xl mx-auto">
+<button aria-label="Kembali" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-primary" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center text-center">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary flex items-center gap-1.5">
+          Kirim Cuan Sat-Set 💸
+        </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Bagi-bagi rezeki tanpa ribet</p>
+</div>
+<button class="px-space-sm py-space-xs rounded-full font-label-md text-label-md text-primary font-bold hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+        Reset
+      </button>
+</div>
+</header>
+<!-- ================= MAIN CONTENT CANVAS ================= -->
+<main class="flex-1 w-full max-w-4xl mx-auto px-margin-mobile pt-space-sm pb-36 flex flex-col gap-space-md">
+<!-- 1. BENTO BANNER: SUMBER DANA (SOURCE OF FUNDS) -->
+<section class="ceramic-card rounded-xl p-space-md bg-gradient-to-br from-surface-container-lowest via-surface-container-low to-secondary-container/20">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Sumber Rekening</span>
+</div>
+<!-- Status Indicator Pill -->
+<span class="inline-flex items-center gap-1 bg-surface-container-high text-primary px-2.5 py-0.5 rounded-full font-label-sm text-label-sm border border-primary-container/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome">auto_awesome</span>
+          Bebas Biaya Admin ✨
+        </span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-lowest/80 backdrop-blur-sm p-space-sm rounded-lg border border-primary-container/20">
+<div class="flex items-center gap-space-sm">
+<div class="w-11 h-8 rounded-lg bg-tertiary-container/30 border border-tertiary-container/60 flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center gap-1">
+              Kartu Utama Pastel Pink 💖
+            </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+              Saldo Aktif: <span class="font-headline-sm text-body-md font-bold text-primary">Rp 14.200.000</span>
+</div>
+</div>
+</div>
+<button class="self-end sm:self-center text-primary font-label-md text-label-md flex items-center gap-0.5 hover:underline py-1 px-2 rounded-full hover:bg-surface-container" type="button">
+          Ganti Kartu
+          <span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+<!-- 2. QUICK RECIPIENTS: BESTIE LIST (AVATARS) -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xxs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold flex items-center gap-1.5">
+          Penerima Favorit (Bestie List)
+          <span class="text-tertiary text-sm">✨</span>
+</h2>
+<span class="font-label-md text-label-md text-primary font-semibold cursor-pointer hover:underline">Semua Bestie</span>
+</div>
+<!-- Horizontal Scrollable Bestie Track -->
+<div class="flex items-center gap-space-sm overflow-x-auto pb-space-xs pt-space-xxs no-scrollbar snap-x">
+<!-- Add New Contact Button -->
+<button class="flex flex-col items-center gap-1.5 shrink-0 group focus:outline-none" type="button">
+<div class="w-16 h-16 rounded-full border-2 border-dashed border-primary-container group-hover:border-primary flex flex-col items-center justify-center bg-surface-container-low transition-colors duration-150">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="person_add">person_add</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold text-center group-hover:underline">+ Kontak</span>
+</button>
+<!-- Bestie 1 (Selected State) -->
+<button class="flex flex-col items-center gap-1.5 shrink-0 group focus:outline-none" type="button">
+<div class="relative">
+<div class="w-16 h-16 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-surface overflow-hidden bg-tertiary-fixed flex items-center justify-center transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-tertiary text-[34px]" data-icon="face_3" style="font-variation-settings: 'FILL' 1;">face_3</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary text-[10px] border border-surface shadow-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="check">check</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold max-w-[80px] truncate text-center">Bestie Tiara 🌸</span>
+</button>
+<!-- Bestie 2 -->
+<button class="flex flex-col items-center gap-1.5 shrink-0 group focus:outline-none" type="button">
+<div class="w-16 h-16 rounded-full ring-1 ring-outline-variant hover:ring-primary hover:ring-offset-2 overflow-hidden bg-primary-fixed flex items-center justify-center transition-all group-hover:scale-105">
+<span class="material-symbols-outlined text-primary text-[34px]" data-icon="face_6" style="font-variation-settings: 'FILL' 1;">face_6</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium max-w-[80px] truncate text-center">Asep Kopi ☕</span>
+</button>
+<!-- Bestie 3 -->
+<button class="flex flex-col items-center gap-1.5 shrink-0 group focus:outline-none" type="button">
+<div class="w-16 h-16 rounded-full ring-1 ring-outline-variant hover:ring-primary hover:ring-offset-2 overflow-hidden bg-tertiary-fixed-dim/40 flex items-center justify-center transition-all group-hover:scale-105">
+<span class="material-symbols-outlined text-tertiary text-[34px]" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium max-w-[80px] truncate text-center">Mama Tercinta 💖</span>
+</button>
+<!-- Bestie 4 -->
+<button class="flex flex-col items-center gap-1.5 shrink-0 group focus:outline-none" type="button">
+<div class="w-16 h-16 rounded-full ring-1 ring-outline-variant hover:ring-primary hover:ring-offset-2 overflow-hidden bg-secondary-fixed flex items-center justify-center transition-all group-hover:scale-105">
+<span class="material-symbols-outlined text-secondary text-[34px]" data-icon="cottage" style="font-variation-settings: 'FILL' 1;">cottage</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium max-w-[80px] truncate text-center">Kost Mawar 🏠</span>
+</button>
+</div>
+</section>
+<!-- 3. INPUT NOMINAL TRANSFER (BENTO HERO INPUT) -->
+<section class="ceramic-card rounded-xl p-space-lg flex flex-col items-center text-center">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant mb-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="payments">payments</span>
+<span>Nominal yang Mau Ditransfer</span>
+</div>
+<!-- Financial Number Display Large -->
+<div class="my-space-sm flex items-baseline justify-center gap-2">
+<span class="font-headline-md text-headline-md text-primary font-bold">Rp</span>
+<div class="font-financial-number-lg text-financial-number-lg text-on-surface font-extrabold tracking-tight">
+          150.000
+        </div>
+</div>
+<!-- Quick Amount Pills -->
+<div class="w-full grid grid-cols-3 sm:grid-cols-5 gap-space-xs mt-space-sm">
+<button class="py-2 px-3 rounded-full text-center font-label-md text-label-md font-semibold bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95" type="button">
+          50rb
+        </button>
+<button class="py-2 px-3 rounded-full text-center font-label-md text-label-md font-semibold bg-primary-container text-on-primary-container shadow-sm transition-all active:scale-95" type="button">
+          100rb
+        </button>
+<button class="py-2 px-3 rounded-full text-center font-label-md text-label-md font-semibold bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95" type="button">
+          250rb
+        </button>
+<button class="py-2 px-3 rounded-full text-center font-label-md text-label-md font-semibold bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95" type="button">
+          500rb
+        </button>
+<button class="col-span-2 sm:col-span-1 py-2 px-3 rounded-full text-center font-label-md text-label-md font-bold text-tertiary bg-tertiary-fixed/60 hover:bg-tertiary-fixed transition-all active:scale-95" type="button">
+          Semua Saldo
+        </button>
+</div>
+</section>
+<!-- 4. CATATAN / NOTES & CUTE STICKERS -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Notes Field -->
+<div class="ceramic-card rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<label class="font-headline-sm text-headline-sm text-on-surface font-bold flex items-center gap-1.5 mb-space-xs" for="transfer-notes">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="edit_note">edit_note</span>
+            Catatan Duit ✍️
+          </label>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+            Tulis pesan manis biar makin happy terimanya!
+          </p>
+</div>
+<div class="relative">
+<input class="w-full inset-soft rounded-lg px-4 py-3 text-on-surface font-body-md text-body-md border-0 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest placeholder:text-outline/70 transition-all outline-none" id="transfer-notes" placeholder="Buat jajan matcha bareng 🍵 / patungan kemarin" type="text" value="Buat jajan matcha bareng 🍵"/>
+<span class="absolute right-3 top-3 text-lg select-none">💌</span>
+</div>
+</div>
+<!-- Kawaii Digital Greeting Stickers -->
+<div class="ceramic-card rounded-xl p-space-md flex flex-col justify-between">
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold flex items-center gap-1.5 mb-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="loyalty">loyalty</span>
+            Stiker Kartu Ucapan Digital 🎀
+          </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+            Pilih vibe kartu transfer kamu:
+          </p>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<!-- Sticker 1 (Selected) -->
+<button class="flex items-center gap-2 p-2 rounded-lg bg-secondary-container/40 border-2 border-primary text-left transition-all active:scale-95" type="button">
+<span class="text-xl">💖</span>
+<span class="font-label-md text-label-md font-bold text-on-secondary-container truncate">Makasih Banyak!</span>
+</button>
+<!-- Sticker 2 -->
+<button class="flex items-center gap-2 p-2 rounded-lg bg-surface-container border border-primary-container/30 hover:border-primary text-left transition-all active:scale-95" type="button">
+<span class="text-xl">🧋</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant truncate">Patungan Boba</span>
+</button>
+<!-- Sticker 3 -->
+<button class="flex items-center gap-2 p-2 rounded-lg bg-surface-container border border-primary-container/30 hover:border-primary text-left transition-all active:scale-95" type="button">
+<span class="text-xl">🎂</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant truncate">HBD Bestie!</span>
+</button>
+<!-- Sticker 4 -->
+<button class="flex items-center gap-2 p-2 rounded-lg bg-surface-container border border-primary-container/30 hover:border-primary text-left transition-all active:scale-95" type="button">
+<span class="text-xl">☕</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant truncate">Traktir Kopi</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 5. TACTILE TOGGLE: NOTIFIKASI WHATSAPP OTOMATIS -->
+<section class="ceramic-card rounded-xl p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]" data-icon="send">send</span>
+</div>
+<div>
+<div class="font-body-md text-body-md font-bold text-on-surface">Kirim Notif Lucu ke WhatsApp Bestie</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Kirim bukti transfer estetik via chat otomatis</div>
+</div>
+</div>
+<!-- Kawaii Pill Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-[52px] h-[30px] bg-[#E4DCF5] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[4px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all after:shadow-md peer-checked:bg-secondary"></div>
+</label>
+</section>
+</main>
+<!-- ================= STICKY BOTTOM ACTION (CTA) ================= -->
+<div class="fixed bottom-16 left-0 w-full z-40 px-margin-mobile pointer-events-none">
+<div class="max-w-4xl mx-auto flex justify-center pointer-events-auto">
+<button class="w-full sm:w-2/3 md:w-1/2 py-3.5 px-6 rounded-full bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-[0px_12px_28px_-4px_rgba(184,167,224,0.6)] hover:bg-secondary-container active:scale-95 transition-all duration-150 border border-white/80" type="button">
+<span>Gas Kirim Duit Sekarang</span>
+<span class="text-xl">🚀</span>
+</button>
+</div>
+</div>
+<!-- ================= BOTTOM NAVIGATION BAR (Shared Component Anchor) ================= -->
+<!-- Contextual State: 'Home' / Transfer maps directly to the active financial hub context -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-mobile py-space-xs bg-surface dark:bg-surface shadow-md dark:shadow-none">
+<!-- Item 1: Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-space-md py-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm font-bold mt-0.5">Home</span>
+</a>
+<!-- Item 2: Budgets -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="savings">savings</span>
+<span class="font-label-sm text-label-sm font-medium mt-0.5">Budgets</span>
+</a>
+<!-- Item 3: Cards -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="credit_card">credit_card</span>
+<span class="font-label-sm text-label-sm font-medium mt-0.5">Cards</span>
+</a>
+<!-- Item 4: Settings -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="palette">palette</span>
+<span class="font-label-sm text-label-sm font-medium mt-0.5">Settings</span>
+</a>
+</nav>
+</body></html>

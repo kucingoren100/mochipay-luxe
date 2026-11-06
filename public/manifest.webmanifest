@@ -1,0 +1,43 @@
+{
+  "name": "MochiMoy — Kawaii Pastel Luxe Finance",
+  "short_name": "MochiMoy",
+  "description": "Catat cuan, celengan impian, dan dompet pastel yang tersimpan 100% di perangkatmu.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF8FC",
+  "theme_color": "#B8A7E0",
+  "lang": "id",
+  "icons": [
+    { "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catat Pengeluaran Sat-Set",
+      "short_name": "Catat Jajan",
+      "description": "Buka form cepat catat pengeluaran",
+      "url": "/?action=quick-expense",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Kalender Jadwal Cantikk",
+      "short_name": "Kalender",
+      "description": "Buka kalender tugas dan keuangan",
+      "url": "/todo/calendar",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Riwayat & Analisis Cuan",
+      "short_name": "Analisis",
+      "description": "Lihat statistik dan grafik pengeluaran",
+      "url": "/riwayat",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}
