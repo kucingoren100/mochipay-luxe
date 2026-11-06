@@ -144,12 +144,12 @@ const SECTIONS: { id: string; emoji: string; title: string; body: string[]; step
   {
     id: "widget",
     emoji: "📲",
-    title: "Widget Home Screen & Galeri Pratinjau",
+    title: "Galeri Widget & Pintasan Home Screen",
     body: [
-      "MochiMoy punya dua keluarga widget layar utama: widget keuangan MochiMoy 💰 (11 varian — saldo, jajan, celengan, budget, dll.) dan widget Meow Todo 🐱 (Daftar Tugas 3x2 + Kalender Dot Matrix 3x2 yang menampilkan tugasmu langsung dari database lokal).",
-      "Galerinya ada di Saya → \"Widget Desktop/HP 📲\" untuk melihat semua varian, dan di halaman Tugas ada \"📲 Lihat Widget\" untuk pratinjau keluarga Meow Todo. Buka salah satu untuk masuk ke modal pratinjau: geser kiri/kanan atau pakai titik pagination buat pindah varian, dan angka di dalamnya adalah data asli milikmu.",
-      "Tombol \"Tambahkan ke Layar Utama\" di bawah modal mencoba API instalasi native browser. Kalau belum didukung (mayoritas browser), otomatis muncul panduan 3 langkah untuk Android (Chrome) dan iPhone (iOS Safari), plus tombol \"Buka Versi Standalone 🔗\" untuk menampilkan widget fullscreen.",
-      "Widget membaca data yang sama dengan aplikasi, jadi saldo, tugas, dan jadwal di widget selalu sinkron setelah halaman dibuka kembali.",
+      "MochiMoy menyiapkan dua keluarga tampilan widget: keuangan MochiMoy 💰 (11 varian — saldo, jajan, celengan, budget, dll.) dan Meow Todo 🐱 (Daftar Tugas 3x2 + Kalender Dot Matrix 3x2). Keduanya adalah pratinjau live — angkanya data asli milikmu.",
+      "Galerinya ada di Saya → \"Widget Desktop/HP 📲\" untuk melihat semua varian, dan di halaman Tugas ada \"📲 Lihat Widget\" untuk pratinjau keluarga Meow Todo. Buka salah satu untuk masuk ke modal pratinjau: geser kiri/kanan atau pakai titik pagination buat pindah varian.",
+      "Catatan jujur: widget home screen langsung dari PWA masih fitur eksperimen Chrome (status Backlog, belum dirilis) dan tidak tersedia di iOS. Jadi yang bisa dipasang sekarang adalah pintasan: long-press ikon MochiMoy di Layar Utama → seret shortcut Catat Cuan / Tugas / Kalender ke home screen.",
+      "Buka \"Versi Standalone 🔗\" lalu simpan lewat browser (Add to Home Screen / bookmark) untuk akses fullscreen sat-set. Datanya membaca database lokal yang sama, jadi saldo & tugas selalu sinkron.",
     ],
   },
   {

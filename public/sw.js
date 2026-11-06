@@ -1,4 +1,4 @@
-const CACHE = "mochipay-luxe-v4";
+const CACHE = "mochipay-luxe-v5";
 const PRECACHE = [
   "/",
   "/budgets",

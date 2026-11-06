@@ -36,15 +36,15 @@ export function widgetCatalog(): PreviewWidget[] {
 }
 
 const ANDROID_STEPS = [
-  "Buka MochiMoy di Chrome, lalu pasang sebagai aplikasi (menu ⋮ → 'Install app').",
-  "Tekan lama area kosong di Layar Utama HP → pilih menu 'Widget'.",
-  "Cari 'MochiMoy' / 'Meow Todo' → geser widget ke layar utama!",
+  "Pasang dulu MochiMoy sebagai aplikasi: Chrome → menu ⋮ → 'Install app'.",
+  "Tekan lama ikon MochiMoy di Layar Utama → seret pintasan (Catat Cuan / Tugas / Kalender) ke home screen.",
+  "Widget home screen dari PWA masih fitur eksperimen Chrome (belum dirilis), jadi pakai pintasan & Versi Standalone dulu ya 🐾",
 ];
 
 const IOS_STEPS = [
   "Buka halaman widget di Safari (pakai tombol 'Buka Versi Standalone' di bawah).",
   "Tekan tombol Bagikan 📤 di toolbar Safari.",
-  "Pilih 'Tambah ke Layar Utama' → widget siap dipakai!",
+  "Pilih 'Tambah ke Layar Utama' → pintasan fullscreen siap dipakai! (iOS belum mendukung widget dari web app.)",
 ];
 
 function WidgetStage({ widget, data, tasks, categories, onQuickAdd }: { widget: PreviewWidget; data: WidgetData; tasks: TodoTask[]; categories: TodoCategory[]; onQuickAdd: () => void }) {
@@ -199,7 +199,7 @@ export function WidgetPreviewModal({
           </div>
           {nativeState === "unsupported" && (
             <p className="mb-3 rounded-lg bg-inset px-3 py-2 font-manrope text-xs text-muted">
-              Browser ini belum mendukung pemasangan widget otomatis, jadi ikuti langkah manual di bawah ya 🐾
+              Browser/platform ini belum mendukung pemasangan widget otomatis dari web — yang kamu lihat di atas pratinjau live, dan langkah manual di bawah memakai pintasan home screen ya 🐾
             </p>
           )}
           <div className="grid grid-cols-2 gap-2">

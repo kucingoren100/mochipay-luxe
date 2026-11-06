@@ -109,8 +109,9 @@ export function BottomNav({ onCatat }: { onCatat: () => void }) {
       <LayoutGroup id="kawaii-bottom-nav">
         <nav
           aria-label="Navigasi bawah"
-          className="fixed bottom-6 left-1/2 z-50 mb-[env(safe-area-inset-bottom)] h-[68px] w-[calc(100%-3rem)] max-w-[370px] -translate-x-1/2 rounded-[28px] p-2 backdrop-blur-xl lg:hidden"
+          className="fixed left-1/2 z-50 h-[68px] w-[calc(100%-3rem)] max-w-[370px] -translate-x-1/2 rounded-[28px] p-2 backdrop-blur-xl lg:hidden"
           style={{
+            bottom: "calc(1rem + env(safe-area-inset-bottom, 0px))",
             background: "color-mix(in srgb, var(--card) 90%, transparent)",
             border: "1.5px solid color-mix(in srgb, var(--primary) 25%, transparent)",
             boxShadow:
@@ -138,8 +139,9 @@ export function BottomNav({ onCatat }: { onCatat: () => void }) {
           aria-label="Catat Cuan"
           whileTap={{ scale: 0.9 }}
           onClick={onCatat}
-          className="fixed bottom-[100px] right-6 z-40 grid h-14 w-14 place-items-center rounded-2xl text-on-primary lg:hidden"
+          className="fixed right-6 z-40 grid h-14 w-14 place-items-center rounded-2xl text-on-primary lg:hidden"
           style={{
+            bottom: "calc(5.25rem + env(safe-area-inset-bottom, 0px))",
             background: "linear-gradient(135deg, var(--primary), var(--tertiary))",
             boxShadow: "0 10px 24px -6px rgba(var(--shadow-rgb), 0.5)",
           }}
