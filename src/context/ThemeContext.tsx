@@ -20,7 +20,7 @@ const DEFAULTS: Preferences = {
   mode: "system",
   highContrastNumbers: false,
   maskBalance: false,
-  userName: "NAYA PUTRI",
+  userName: "NAILAH NASYWA",
 };
 
 function readPrefs(): Preferences {
