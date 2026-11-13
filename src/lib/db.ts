@@ -1,7 +1,7 @@
 import Dexie, { type Table } from "dexie";
-import { BUDGET_CATEGORY_MAP, seedBudgets, seedContacts, seedGoals, seedTodoCategories, seedTodoHabits, seedTodoTasks, seedTransactions, seedWallets } from "@/lib/seed-data";
+import { BUDGET_CATEGORY_MAP, EXPENSE_CATEGORIES, INCOME_CATEGORIES, seedBudgets, seedContacts, seedGoals, seedTodoCategories, seedTodoHabits, seedTodoTasks, seedTransactions, seedWallets } from "@/lib/seed-data";
 import { makeInvoice, uid } from "@/lib/formatters";
-import type { BackupFile, Budget, Contact, Goal, TodoCategory, TodoHabit, TodoTask, Transaction, Wallet } from "@/types/finance";
+import type { BackupFile, Budget, Contact, Goal, TodoCategory, TodoHabit, TodoTask, Transaction, TxCategory, Wallet } from "@/types/finance";
 
 export class MochiPayLocalDB extends Dexie {
   wallets!: Table<Wallet, string>;
@@ -12,6 +12,7 @@ export class MochiPayLocalDB extends Dexie {
   todoCategories!: Table<TodoCategory, string>;
   todoTasks!: Table<TodoTask, string>;
   todoHabits!: Table<TodoHabit, string>;
+  txCategories!: Table<TxCategory, string>;
 
   constructor() {
     super("MochiPayLocalDB");
@@ -26,6 +27,9 @@ export class MochiPayLocalDB extends Dexie {
       todoCategories: "id, order",
       todoTasks: "id, categoryId, dueDate, isCompleted, createdAt",
       todoHabits: "id",
+    });
+    this.version(3).stores({
+      txCategories: "id, type",
     });
   }
 }
@@ -42,7 +46,7 @@ export function getDb(): MochiPayLocalDB {
 
 const tables = () => {
   const db = getDb();
-  return [db.wallets, db.transactions, db.budgets, db.goals, db.contacts, db.todoCategories, db.todoTasks, db.todoHabits] as const;
+  return [db.wallets, db.transactions, db.budgets, db.goals, db.contacts, db.todoCategories, db.todoTasks, db.todoHabits, db.txCategories] as const;
 };
 
 async function spentOnDay(walletId: string, date: string, exceptId?: string): Promise<number> {
@@ -181,6 +185,18 @@ export async function addBudget(budget: Budget): Promise<void> {
   await getDb().budgets.add(budget);
 }
 
+export async function addTxCategory(category: TxCategory): Promise<void> {
+  await getDb().txCategories.add(category);
+}
+
+export async function updateTxCategory(id: string, patch: Partial<TxCategory>): Promise<void> {
+  await getDb().txCategories.update(id, patch);
+}
+
+export async function deleteTxCategory(id: string): Promise<void> {
+  await getDb().txCategories.delete(id);
+}
+
 export async function updateBudget(id: string, patch: Partial<Budget>): Promise<void> {
   await getDb().budgets.update(id, patch);
 }
@@ -294,6 +310,14 @@ async function seedAll() {
   await seedTodos();
 }
 
+async function seedTxCategories() {
+  const rows: TxCategory[] = [
+    ...EXPENSE_CATEGORIES.map((item, i) => ({ id: uid("cat"), type: "expense" as const, name: item.name, icon: item.icon, order: i })),
+    ...INCOME_CATEGORIES.map((item, i) => ({ id: uid("cat"), type: "income" as const, name: item.name, icon: item.icon, order: i })),
+  ];
+  await getDb().txCategories.bulkAdd(rows);
+}
+
 let bootPromise: Promise<void> | null = null;
 
 export function bootDatabase(): Promise<void> {
@@ -309,6 +333,7 @@ export function bootDatabase(): Promise<void> {
       const count = await getDb().wallets.count();
       if (count === 0) await seedAll();
       else if ((await getDb().todoCategories.count()) === 0) await seedTodos();
+      if ((await getDb().txCategories.count()) === 0) await seedTxCategories();
     })().catch((error) => {
       bootPromise = null;
       throw error;

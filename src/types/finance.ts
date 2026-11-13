@@ -91,6 +91,14 @@ export interface Preferences {
   userName: string;
 }
 
+export interface TxCategory {
+  id: string;
+  type: "income" | "expense";
+  name: string;
+  icon: string;
+  order: number;
+}
+
 export interface CategoryOption {
   name: string;
   icon: string;

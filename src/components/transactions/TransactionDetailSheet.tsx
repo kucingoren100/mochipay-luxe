@@ -7,9 +7,8 @@ import { KawaiiSelect } from "@/components/ui/KawaiiSelect";
 import { evaluateExpression, SmartKeypad } from "@/components/transactions/SmartKeypad";
 import { Overlay, Pressable } from "@/components/ui/SquircleCard";
 import { deleteTransaction, updateTransaction } from "@/lib/db";
-import { useWallets } from "@/hooks/useLocalDb";
+import { useTxCategories, useWallets } from "@/hooks/useLocalDb";
 import { clampWords, compressImage, formatDateTime, formatRupiah, wordCount } from "@/lib/formatters";
-import { EXPENSE_CATEGORIES, INCOME_CATEGORIES } from "@/lib/seed-data";
 import type { Transaction } from "@/types/finance";
 
 export function LedgerRow({
@@ -78,7 +77,9 @@ export function TransactionDetailSheet({
   }, [tx]);
 
   const amount = useMemo(() => evaluateExpression(expr), [expr]);
-  const options = tx?.type === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
+  const incomeCats = useTxCategories("income");
+  const expenseCats = useTxCategories("expense");
+  const options = tx?.type === "income" ? incomeCats : expenseCats;
   const wallet = wallets.find((item) => item.id === walletId);
 
   const onKey = (key: string) => {

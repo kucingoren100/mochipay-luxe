@@ -4,13 +4,14 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { KawaiiSelect } from "@/components/ui/KawaiiSelect";
 import { KawaiiSwitch } from "@/components/ui/KawaiiSwitch";
+import { EmojiPicker } from "@/components/ui/EmojiPicker";
 import { Overlay, Pressable } from "@/components/ui/SquircleCard";
 import { evaluateExpression, SmartKeypad } from "@/components/transactions/SmartKeypad";
-import { createTransaction } from "@/lib/db";
-import { useGoals, useWallets } from "@/hooks/useLocalDb";
-import { clampWords, compressImage, formatRupiah, nowTime, todayISO, wordCount } from "@/lib/formatters";
-import { EXPENSE_CATEGORIES, INCOME_CATEGORIES, TAGS } from "@/lib/seed-data";
-import type { Book, Transaction, TxType } from "@/types/finance";
+import { addTxCategory, createTransaction, deleteTxCategory, updateTxCategory } from "@/lib/db";
+import { useGoals, useTxCategories, useWallets } from "@/hooks/useLocalDb";
+import { clampWords, compressImage, formatRupiah, nowTime, todayISO, uid, wordCount } from "@/lib/formatters";
+import { TAGS } from "@/lib/seed-data";
+import type { Book, Transaction, TxCategory, TxType } from "@/types/finance";
 
 export interface SavedPayload {
   tx: Transaction;
@@ -35,10 +36,15 @@ export function CatatTransaksiSheet({
 }) {
   const wallets = useWallets();
   const goals = useGoals();
+  const expenseCats = useTxCategories("expense");
+  const incomeCats = useTxCategories("income");
   const [tab, setTab] = useState<TxType>(initialTab);
   const [expr, setExpr] = useState("35000");
-  const [category, setCategory] = useState(EXPENSE_CATEGORIES[0].name);
-  const [icon, setIcon] = useState(EXPENSE_CATEGORIES[0].icon);
+  const [category, setCategory] = useState("");
+  const [icon, setIcon] = useState("🍜");
+  const [managingCats, setManagingCats] = useState(false);
+  const [catForm, setCatForm] = useState<{ id: string | null; name: string; icon: string } | null>(null);
+  const [catError, setCatError] = useState("");
   const [walletId, setWalletId] = useState("wal_bca");
   const [destination, setDestination] = useState("wallet:wal_mochi");
   const [note, setNote] = useState("");
@@ -70,14 +76,24 @@ export function CatatTransaksiSheet({
       const other = wallets.find((wallet) => wallet.id !== firstWallet);
       setDestination(other ? `wallet:${other.id}` : `goal:${goals[0]?.id ?? "goal_japan"}`);
     }
-    const list = (initialGoalId ? "transfer" : initialTab) === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
-    setCategory(list[0].name);
-    setIcon(list[0].icon);
+    setCategory("");
+    setIcon("🍜");
+    setManagingCats(false);
+    setCatForm(null);
+    setCatError("");
     // Form opens once per session. Live wallet updates must not wipe an in-progress entry.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, initialTab, initialGoalId]);
 
-  const categories = tab === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
+  const categories = tab === "income" ? incomeCats : expenseCats;
+
+  useEffect(() => {
+    if (open && tab !== "transfer" && categories.length > 0 && !categories.some((item) => item.name === category)) {
+      setCategory(categories[0].name);
+      setIcon(categories[0].icon);
+    }
+  }, [open, tab, categories, category]);
+
   const amount = useMemo(() => evaluateExpression(expr), [expr]);
   const activeWallet = wallets.find((wallet) => wallet.id === walletId);
 
@@ -100,6 +116,39 @@ export function CatatTransaksiSheet({
       return;
     }
     setExpr((current) => (current + key).replace(/^0+(?=\d)/, "").slice(0, 28));
+  };
+
+  const saveCat = async () => {
+    if (!catForm) return;
+    const name = catForm.name.trim();
+    if (!name) {
+      setCatError("Nama kategori diisi dulu ya 🥺");
+      return;
+    }
+    if (categories.some((item) => item.name === name && item.id !== catForm.id)) {
+      setCatError("Udah ada kategori dengan nama itu");
+      return;
+    }
+    if (catForm.id) {
+      const wasSelected = categories.find((item) => item.id === catForm.id)?.name === category;
+      await updateTxCategory(catForm.id, { name, icon: catForm.icon });
+      if (wasSelected) {
+        setCategory(name);
+        setIcon(catForm.icon);
+      }
+    } else {
+      const order = categories.reduce((max, item) => Math.max(max, item.order), -1) + 1;
+      await addTxCategory({ id: uid("cat"), type: tab === "income" ? "income" : "expense", name, icon: catForm.icon, order });
+      setCategory(name);
+      setIcon(catForm.icon);
+    }
+    setCatForm(null);
+    setCatError("");
+  };
+
+  const removeCat = async (item: TxCategory) => {
+    await deleteTxCategory(item.id);
+    if (category === item.name) setCategory("");
   };
 
   const save = async () => {
@@ -200,11 +249,7 @@ export function CatatTransaksiSheet({
                 type="button"
                 onClick={() => {
                   setTab(value);
-                  if (value !== "transfer") {
-                    const list = value === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
-                    setCategory(list[0].name);
-                    setIcon(list[0].icon);
-                  }
+                  setCategory("");
                 }}
                 className={`h-10 rounded-full font-manrope text-sm font-bold ${tab === value ? "bg-card text-secondary shadow-cloud" : "text-muted"}`}
               >
@@ -217,24 +262,107 @@ export function CatatTransaksiSheet({
             <KawaiiSwitch checked={multi} onChange={setMulti} label="Multi-record aktif" />
           </div>
           {tab !== "transfer" ? (
-            <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4">
-              {categories.map((item) => {
-                const active = category === item.name;
-                return (
+            <div className="mt-4">
+              <div className="mb-2 flex items-center justify-between">
+                <p className="font-manrope text-xs font-bold uppercase tracking-wider text-muted">
+                  {managingCats ? "Kelola kategori" : "Kategori"}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setManagingCats((current) => !current);
+                    setCatForm(null);
+                    setCatError("");
+                  }}
+                  className={`rounded-full px-3 py-1 font-manrope text-xs font-bold ${managingCats ? "bg-primary text-on-primary" : "bg-inset"}`}
+                >
+                  {managingCats ? "Selesai" : "⚙️ Ubah Kategori"}
+                </button>
+              </div>
+              <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+                {categories.map((item, index) => {
+                  const active = !managingCats && category === item.name;
+                  return (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => {
+                        if (managingCats) {
+                          setCatForm({ id: item.id, name: item.name, icon: item.icon });
+                          setCatError("");
+                          return;
+                        }
+                        setCategory(item.name);
+                        setIcon(item.icon);
+                      }}
+                      className={`relative rounded-lg border px-2 py-2 text-center ${active ? "border-secondary bg-inset" : "border-transparent bg-card"}`}
+                    >
+                      {managingCats && (
+                        <span
+                          role="button"
+                          aria-label={`Hapus kategori ${item.name}`}
+                          onClick={async (event) => {
+                            event.stopPropagation();
+                            await removeCat(item);
+                          }}
+                          className="absolute right-1 top-1 grid h-5 w-5 place-items-center rounded-full bg-[var(--expense)] text-[10px] font-bold text-white"
+                        >
+                          ✕
+                        </span>
+                      )}
+                      <span className="mx-auto grid h-9 w-9 place-items-center rounded-full bg-[var(--icon-badge-bg)] text-lg">{item.icon}</span>
+                      <span className="mt-1 block font-manrope text-[11px] font-semibold leading-4">{item.name}</span>
+                    </button>
+                  );
+                })}
+                {managingCats && (
                   <button
-                    key={item.name}
                     type="button"
                     onClick={() => {
-                      setCategory(item.name);
-                      setIcon(item.icon);
+                      setCatForm({ id: null, name: "", icon: "🍜" });
+                      setCatError("");
                     }}
-                    className={`rounded-lg border px-2 py-2 text-center ${active ? "border-secondary bg-inset" : "border-transparent bg-card"}`}
+                    className="rounded-lg border border-dashed border-secondary px-2 py-2 text-center"
                   >
-                    <span className="mx-auto grid h-9 w-9 place-items-center rounded-full bg-[var(--icon-badge-bg)] text-lg">{item.icon}</span>
-                    <span className="mt-1 block font-manrope text-[11px] font-semibold leading-4">{item.name}</span>
+                    <span className="mx-auto grid h-9 w-9 place-items-center rounded-full bg-inset text-lg">＋</span>
+                    <span className="mt-1 block font-manrope text-[11px] font-semibold leading-4">Tambah</span>
                   </button>
-                );
-              })}
+                )}
+              </div>
+              {catForm && (
+                <div className="mt-3 rounded-xl bg-card p-3 shadow-cloud">
+                  <p className="font-manrope text-sm font-semibold">{catForm.id ? "Ubah kategori" : "Kategori baru"}</p>
+                  <input
+                    className="inset-field mt-2 h-11 w-full px-3"
+                    placeholder="Nama kategori"
+                    value={catForm.name}
+                    onChange={(event) => setCatForm({ ...catForm, name: event.target.value })}
+                  />
+                  <div className="mt-2">
+                    <EmojiPicker value={catForm.icon} onChange={(next) => setCatForm({ ...catForm, icon: next })} />
+                  </div>
+                  {catError && <p className="mt-2 font-manrope text-xs font-semibold text-expense">{catError}</p>}
+                  <div className="mt-3 flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => void saveCat()}
+                      className="h-10 flex-1 rounded-full bg-primary font-manrope text-sm font-bold text-on-primary"
+                    >
+                      Simpan
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCatForm(null);
+                        setCatError("");
+                      }}
+                      className="h-10 flex-1 rounded-full bg-inset font-manrope text-sm font-bold"
+                    >
+                      Batal
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div className="mt-4 space-y-3">

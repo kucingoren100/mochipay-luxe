@@ -3,7 +3,7 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { createContext, useContext, useEffect, useState } from "react";
 import { bootDatabase, getDb } from "@/lib/db";
-import type { Budget, Contact, Goal, TodoCategory, TodoHabit, TodoTask, Transaction, Wallet } from "@/types/finance";
+import type { Budget, Contact, Goal, TodoCategory, TodoHabit, TodoTask, Transaction, TxCategory, Wallet } from "@/types/finance";
 
 const ReadyContext = createContext(false);
 
@@ -88,6 +88,14 @@ export function useGoals(): Goal[] {
     if (typeof indexedDB === "undefined") return [] as Goal[];
     return getDb().goals.toArray();
   }, []);
+  return rows ?? [];
+}
+
+export function useTxCategories(type: "income" | "expense"): TxCategory[] {
+  const rows = useLiveQuery(async () => {
+    if (typeof indexedDB === "undefined") return [] as TxCategory[];
+    return getDb().txCategories.where("type").equals(type).sortBy("order");
+  }, [type]);
   return rows ?? [];
 }
 
