@@ -1,7 +1,7 @@
 {
   "name": "MochiMoy — Kawaii Pastel Luxe Finance",
   "short_name": "MochiMoy",
-  "description": "Catat cuan, celengan impian, dan dompet pastel yang tersimpan 100% di perangkatmu.",
+  "description": "Catat tabungan, celengan impian, dan dompet pastel yang tersimpan 100% di perangkatmu.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -33,7 +33,7 @@
       "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Riwayat & Analisis Cuan",
+      "name": "Riwayat & Analisis Tabungan",
       "short_name": "Analisis",
       "description": "Lihat statistik dan grafik pengeluaran",
       "url": "/riwayat",

@@ -1,6 +1,6 @@
 import Dexie, { type Table } from "dexie";
-import { BUDGET_CATEGORY_MAP, EXPENSE_CATEGORIES, INCOME_CATEGORIES, seedBudgets, seedContacts, seedGoals, seedTodoCategories, seedTodoHabits, seedTodoTasks, seedTransactions, seedWallets } from "@/lib/seed-data";
-import { makeInvoice, uid } from "@/lib/formatters";
+import { EXPENSE_CATEGORIES, INCOME_CATEGORIES, seedBudgets, seedContacts, seedGoals, seedTodoCategories, seedTodoHabits, seedTodoTasks, seedTransactions, seedWallets } from "@/lib/seed-data";
+import { formatPeriodLabel, makeInvoice, todayISO, uid } from "@/lib/formatters";
 import type { BackupFile, Budget, Contact, Goal, TodoCategory, TodoHabit, TodoTask, Transaction, TxCategory, Wallet } from "@/types/finance";
 
 export class MochiPayLocalDB extends Dexie {
@@ -56,15 +56,28 @@ async function spentOnDay(walletId: string, date: string, exceptId?: string): Pr
     .reduce((sum, row) => sum + row.amount, 0);
 }
 
-async function adjustBudget(category: string, delta: number) {
+async function adjustBudget(category: string, delta: number, icon = "✨") {
   if (!delta) return;
-  const budgets = await getDb().budgets.toArray();
-  const mapped = BUDGET_CATEGORY_MAP[category];
-  const target = budgets.find((budget) => budget.name === category) ?? budgets.find((budget) => budget.name === mapped);
-  if (!target) return;
-  await getDb().budgets.update(target.id, {
-    spentAmount: Math.max(0, Math.round(target.spentAmount + delta)),
-  });
+  const db = getDb();
+  const budgets = await db.budgets.toArray();
+  const target = budgets.find((budget) => budget.name === category);
+  if (target) {
+    await db.budgets.update(target.id, {
+      spentAmount: Math.max(0, Math.round(target.spentAmount + delta)),
+    });
+    return;
+  }
+  if (delta > 0) {
+    await db.budgets.add({
+      id: uid("bud"),
+      name: category,
+      subtitle: "Kategori pengeluaran baru",
+      icon,
+      limitAmount: 500000,
+      spentAmount: Math.round(delta),
+      period: formatPeriodLabel(new Date(todayISO())),
+    });
+  }
 }
 
 async function applyEffect(tx: Transaction, dir: 1 | -1, exceptId?: string) {
@@ -87,7 +100,7 @@ async function applyEffect(tx: Transaction, dir: 1 | -1, exceptId?: string) {
       }
     }
     await db.wallets.update(wallet.id, { balance: next });
-    await adjustBudget(tx.category, tx.amount * dir);
+    await adjustBudget(tx.category, tx.amount * dir, tx.categoryIcon);
     return;
   }
 

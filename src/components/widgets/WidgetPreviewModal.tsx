@@ -37,7 +37,7 @@ export function widgetCatalog(): PreviewWidget[] {
 
 const ANDROID_STEPS = [
   "Pasang dulu MochiMoy sebagai aplikasi: Chrome → menu ⋮ → 'Install app'.",
-  "Tekan lama ikon MochiMoy di Layar Utama → seret pintasan (Catat Cuan / Tugas / Kalender) ke home screen.",
+  "Tekan lama ikon MochiMoy di Layar Utama → seret pintasan (Catat Tabungan / Tugas / Kalender) ke home screen.",
   "Widget home screen dari PWA masih fitur eksperimen Chrome (belum dirilis), jadi pakai pintasan & Versi Standalone dulu ya 🐾",
 ];
 

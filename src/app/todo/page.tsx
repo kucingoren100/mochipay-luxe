@@ -550,7 +550,7 @@ export default function TodoPage() {
           {step === 1 ? (
             <>
               <h3 className="font-outfit text-xl font-semibold">{editingId ? "Edit Tugas ✏️" : "Tugas Baru Apa Nih? 🐾"}</h3>
-              <input className="inset-field mt-4 h-12 w-full px-3" placeholder="Judul tugas, misal: Review laporan cuan" value={fTitle} onChange={(e) => setFTitle(e.target.value)} />
+              <input className="inset-field mt-4 h-12 w-full px-3" placeholder="Judul tugas, misal: Review laporan tabungan" value={fTitle} onChange={(e) => setFTitle(e.target.value)} />
               <textarea className="inset-field mt-2 min-h-16 w-full px-3 py-2" placeholder="Catatan tambahan (opsional)" value={fNote} onChange={(e) => setFNote(e.target.value)} />
               <p className="mt-3 font-manrope text-xs font-bold uppercase tracking-wider text-muted">Kategori</p>
               <div className="mt-1.5 flex flex-wrap gap-2">

@@ -30,7 +30,7 @@ export const INCOME_CATEGORIES: CategoryOption[] = [
   { name: "Gaji Pokok", icon: "💰" },
   { name: "Bonus & THR", icon: "🎊" },
   { name: "Freelance / Side", icon: "💻" },
-  { name: "Cuan Bisnis", icon: "🛍️" },
+  { name: "Tabungan Bisnis", icon: "🛍️" },
   { name: "Hadiah & Angpao", icon: "🧧" },
   { name: "Bunga & Dividen", icon: "📈" },
   { name: "Cashback & Reward", icon: "🎟️" },
@@ -41,7 +41,7 @@ export const INCOME_CATEGORIES: CategoryOption[] = [
   { name: "Tip & Apresiasi", icon: "✨" },
   { name: "Piutang Masuk", icon: "🤝" },
   { name: "Hibah & Donasi", icon: "💝" },
-  { name: "Cuan Investasi", icon: "🚀" },
+  { name: "Tabungan Investasi", icon: "🚀" },
 ];
 
 export const BUDGET_CATEGORY_MAP: Record<string, string> = {
@@ -810,7 +810,7 @@ export const seedTodoCategories: TodoCategory[] = [
 export const seedTodoTasks: TodoTask[] = [
   {
     id: "task_review_laporan",
-    title: "Selesaikan review laporan cuan bulanan",
+    title: "Selesaikan review laporan tabungan bulanan",
     note: "Fokus ke pos jajan boba yang membengkak minggu lalu.",
     categoryId: "tcat_kerja",
     dueDate: iso(0),
@@ -957,7 +957,7 @@ export const seedTodoTasks: TodoTask[] = [
     repeat: "none",
     subtasks: [
       { id: "sub_sl_1", text: "Outline cerita", isDone: true },
-      { id: "sub_sl_2", text: "Grafik cuan kuartal", isDone: false },
+      { id: "sub_sl_2", text: "Grafik tabungan kuartal", isDone: false },
       { id: "sub_sl_3", text: "Latihan presentasi", isDone: false },
     ],
     tags: ["Kerja"],

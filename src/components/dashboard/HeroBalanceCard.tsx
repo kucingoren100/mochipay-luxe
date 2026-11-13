@@ -29,7 +29,7 @@ export function HeroBalanceCard({
       <div className="relative flex items-start justify-between gap-3">
         <div>
           <p className="font-manrope text-xs font-bold uppercase tracking-wider text-muted">Dompet Mochi 🐰</p>
-          <h2 className="font-outfit text-lg font-semibold">Total Cuan Kamu / Duit Dingin</h2>
+          <h2 className="font-outfit text-lg font-semibold">Total Tabungan Kamu / Duit Dingin</h2>
         </div>
         <Pressable ariaLabel={mask ? "Tampilkan saldo" : "Sembunyikan saldo"} className="grid h-10 w-10 place-items-center rounded-full bg-inset" onClick={onToggleMask}>
           {mask ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -43,7 +43,7 @@ export function HeroBalanceCard({
           <p className="tnum text-lg font-bold text-income">{formatRupiah(inflow, mask)}</p>
         </div>
         <div className="rounded-lg bg-inset p-3">
-          <p className="font-manrope text-xs text-muted">Jajan</p>
+          <p className="font-manrope text-xs text-muted">Pengeluaran</p>
           <p className="tnum text-lg font-bold text-expense">{formatRupiah(outflow, mask)}</p>
         </div>
       </div>

@@ -64,8 +64,8 @@ export default function SettingsPage() {
     const lastNet = lmInflow - lmOutflow;
     const growthLabel =
       lastNet > 0
-        ? `${thisNet - lastNet >= 0 ? "+" : ""}${Math.round(((thisNet - lastNet) / lastNet) * 100)}% cuan bulan ini 🚀`
-        : "+8.5% cuan bulan ini 🚀";
+        ? `${thisNet - lastNet >= 0 ? "+" : ""}${Math.round(((thisNet - lastNet) / lastNet) * 100)}% tabungan bulan ini 🚀`
+        : "+8.5% tabungan bulan ini 🚀";
     const pct = inflow > 0 ? Math.min(100, Math.round((thisNet / inflow) * 100)) : 0;
     return { total, growthLabel, pct: Math.max(0, pct) };
   }, [wallets, transactions]);
@@ -156,7 +156,7 @@ export default function SettingsPage() {
           {theme.paletteMeta.name} Aktif {theme.paletteMeta.emoji}
         </span>
         <div className="mt-3 rounded-xl border border-line bg-card p-4">
-          <p className="font-manrope text-xs text-muted">Total Cuan Kamu</p>
+          <p className="font-manrope text-xs text-muted">Total Tabungan Kamu</p>
           <p className="tnum text-2xl font-bold">{formatRupiah(preview.total, theme.maskBalance)}</p>
           <span className="chip-income mt-2 inline-flex rounded-full px-2 py-0.5 font-manrope text-[10px] font-bold">{preview.growthLabel}</span>
           <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-inset">
@@ -235,7 +235,7 @@ export default function SettingsPage() {
         <div className="flex items-center justify-between">
           <div>
             <p className="font-manrope text-sm font-semibold">Angka ekstra tebal & kontras</p>
-            <p className="font-manrope text-xs text-muted">Tebalkan dan kontraskan semua angka cuan.</p>
+            <p className="font-manrope text-xs text-muted">Tebalkan dan kontraskan semua angka tabungan.</p>
           </div>
           <KawaiiSwitch checked={theme.highContrastNumbers} onChange={theme.setHighContrastNumbers} label="Angka ekstra tebal dan kontras" />
         </div>
@@ -272,7 +272,7 @@ export default function SettingsPage() {
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
             <h2 className="font-outfit text-lg font-semibold">Panduan Pemakaian 📖</h2>
-            <p className="mt-1 font-manrope text-xs text-muted">Tata cara pakai lengkap: catat cuan, celengan, dompet, tema, sampai backup.</p>
+            <p className="mt-1 font-manrope text-xs text-muted">Tata cara pakai lengkap: catat tabungan, celengan, dompet, tema, sampai backup.</p>
           </div>
           <Link href="/panduan" className="btn-primary flex h-11 shrink-0 items-center gap-2 px-4 text-sm">
             <BookOpen size={16} /> Buka Panduan

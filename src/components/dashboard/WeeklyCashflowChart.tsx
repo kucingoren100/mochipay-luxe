@@ -15,7 +15,7 @@ export function WeeklyCashflowChart({
   return (
     <section className="cloud-card p-5">
       <h2 className="font-outfit text-lg font-semibold">Duit Keluar vs Masuk 📊</h2>
-      <p className="font-manrope text-xs text-muted">Sen sampai Min · batang hijau cuan, batang coral jajan</p>
+      <p className="font-manrope text-xs text-muted">Sen sampai Min · batang hijau tabungan, batang coral pengeluaran</p>
       <div className="mt-4 flex h-40 items-end justify-between gap-2">
         {series.map((item) => (
           <div key={item.label} className="flex flex-1 flex-col items-center gap-2">
@@ -28,8 +28,8 @@ export function WeeklyCashflowChart({
         ))}
       </div>
       <div className="mt-2 flex gap-4 font-manrope text-xs">
-        <span className="text-income">● Cuan</span>
-        <span className="text-expense">● Jajan</span>
+        <span className="text-income">● Tabungan</span>
+        <span className="text-expense">● Pengeluaran</span>
         <span className="text-muted">{WEEKDAY_LABELS.join(" · ")}</span>
       </div>
       <p className="mt-4 rounded-lg bg-inset px-3 py-3 font-manrope text-sm font-semibold">{message}</p>

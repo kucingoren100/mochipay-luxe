@@ -85,7 +85,7 @@ export default function RiwayatPage() {
     if (inflow === 0 && outflow === 0) score = "Belum ada catatan 🌸";
     else if (rate >= 0.2) score = "Sefruit Anak Rajin Hemat ✨ (Aman dari Bokek)";
     else if (rate >= 0) score = "Lumayan Hemat 🌸 (Tetap Semangat Nabung)";
-    else score = "Wah Bokek 🥺 (Ayo Rapikan Jajan)";
+    else score = "Wah Bokek 🥺 (Ayo Rapikan Pengeluaran)";
 
     const makeSegments = (map: Record<string, number>) => {
       const total = Object.values(map).reduce((sum, value) => sum + value, 0) || 1;
@@ -137,8 +137,8 @@ export default function RiwayatPage() {
     <main className="space-y-5">
       <header className="flex items-center justify-between">
         <div>
-          <h1 className="font-outfit text-2xl font-semibold">Riwayat & Analisis Cuan 📊</h1>
-          <p className="font-manrope text-sm text-muted">Lacak arus kas dan jajanmu ✨</p>
+          <h1 className="font-outfit text-2xl font-semibold">Riwayat & Analisis Tabungan 📊</h1>
+          <p className="font-manrope text-sm text-muted">Lacak arus kas dan pengeluaranmu ✨</p>
         </div>
         <Pressable className="btn-primary h-10 px-3 text-sm" onClick={() => ui.openExport()}>
           <Download size={16} /> CSV

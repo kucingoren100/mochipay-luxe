@@ -241,6 +241,11 @@ html[data-theme="dark"] .chip-expense { color: #ffc7c7; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
+.picker-scroll::-webkit-scrollbar { width: 6px; }
+.picker-scroll::-webkit-scrollbar-track { background: transparent; }
+.picker-scroll::-webkit-scrollbar-thumb { border-radius: 999px; background: var(--line); }
+.picker-scroll { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+
 @keyframes pop-in {
   from { transform: translateY(8px) scale(0.98); opacity: 0; }
   to { transform: none; opacity: 1; }

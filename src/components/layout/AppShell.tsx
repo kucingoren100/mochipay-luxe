@@ -101,7 +101,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         time: nowTime(),
         book: celebration.tx.book,
         tag: "Harian",
-        note: "Alokasi 10% dari cuan masuk",
+        note: "Alokasi 10% dari tabungan masuk",
         adminFee: 0,
       });
       setCelebration((current) => (current ? { ...current, allocated: share } : current));
@@ -140,7 +140,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <AppSwitcherHeader />
           </div>
           <button type="button" className="btn-primary mt-4 flex h-12 items-center justify-center gap-2" onClick={() => api.openCatat("expense")}>
-            <Plus size={18} /> Catat Cuan
+            <Plus size={18} /> Catat Tabungan
           </button>
         </aside>
         <div className="lg:pl-[260px]">

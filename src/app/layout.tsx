@@ -12,7 +12,7 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", displa
 
 export const metadata: Metadata = {
   title: "MochiMoy — Kawaii Pastel Luxe Finance",
-  description: "Catat cuan, celengan impian, dan dompet pastel. Semua data tersimpan di perangkatmu.",
+  description: "Catat tabungan, celengan impian, dan dompet pastel. Semua data tersimpan di perangkatmu.",
   applicationName: "MochiMoy",
   manifest: "/manifest.webmanifest",
   appleWebApp: {

@@ -45,6 +45,7 @@ export function CatatTransaksiSheet({
   const [managingCats, setManagingCats] = useState(false);
   const [catForm, setCatForm] = useState<{ id: string | null; name: string; icon: string } | null>(null);
   const [catError, setCatError] = useState("");
+  const [pendingCat, setPendingCat] = useState<{ name: string; icon: string } | null>(null);
   const [walletId, setWalletId] = useState("wal_bca");
   const [destination, setDestination] = useState("wallet:wal_mochi");
   const [note, setNote] = useState("");
@@ -81,6 +82,7 @@ export function CatatTransaksiSheet({
     setManagingCats(false);
     setCatForm(null);
     setCatError("");
+    setPendingCat(null);
     // Form opens once per session. Live wallet updates must not wipe an in-progress entry.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, initialTab, initialGoalId]);
@@ -88,11 +90,22 @@ export function CatatTransaksiSheet({
   const categories = tab === "income" ? incomeCats : expenseCats;
 
   useEffect(() => {
-    if (open && tab !== "transfer" && categories.length > 0 && !categories.some((item) => item.name === category)) {
+    if (open && tab !== "transfer" && !pendingCat && categories.length > 0 && !categories.some((item) => item.name === category)) {
       setCategory(categories[0].name);
       setIcon(categories[0].icon);
     }
-  }, [open, tab, categories, category]);
+  }, [open, tab, categories, category, pendingCat]);
+
+  // Live-query list telat menerima perubahan DB; tunggu kategori baru/rename muncul sebelum menyeleksi.
+  useEffect(() => {
+    if (!pendingCat) return;
+    const found = categories.find((item) => item.name === pendingCat.name);
+    if (found) {
+      setCategory(found.name);
+      setIcon(found.icon);
+      setPendingCat(null);
+    }
+  }, [categories, pendingCat]);
 
   const amount = useMemo(() => evaluateExpression(expr), [expr]);
   const activeWallet = wallets.find((wallet) => wallet.id === walletId);
@@ -130,17 +143,12 @@ export function CatatTransaksiSheet({
       return;
     }
     if (catForm.id) {
-      const wasSelected = categories.find((item) => item.id === catForm.id)?.name === category;
       await updateTxCategory(catForm.id, { name, icon: catForm.icon });
-      if (wasSelected) {
-        setCategory(name);
-        setIcon(catForm.icon);
-      }
+      setPendingCat({ name, icon: catForm.icon });
     } else {
       const order = categories.reduce((max, item) => Math.max(max, item.order), -1) + 1;
       await addTxCategory({ id: uid("cat"), type: tab === "income" ? "income" : "expense", name, icon: catForm.icon, order });
-      setCategory(name);
-      setIcon(catForm.icon);
+      setPendingCat({ name, icon: catForm.icon });
     }
     setCatForm(null);
     setCatError("");
@@ -206,7 +214,7 @@ export function CatatTransaksiSheet({
             time,
             book,
             tag: "Harian",
-            note: "Auto-alokasi 10% dari cuan masuk",
+            note: "Auto-alokasi 10% dari tabungan masuk",
             adminFee: 0,
           });
           allocated = share;
@@ -250,6 +258,7 @@ export function CatatTransaksiSheet({
                 onClick={() => {
                   setTab(value);
                   setCategory("");
+                  setPendingCat(null);
                 }}
                 className={`h-10 rounded-full font-manrope text-sm font-bold ${tab === value ? "bg-card text-secondary shadow-cloud" : "text-muted"}`}
               >

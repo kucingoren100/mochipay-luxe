@@ -28,8 +28,8 @@ type FeedFilter = "all" | "expense" | "income" | "transfer";
 
 const FILTERS: { id: FeedFilter; label: string }[] = [
   { id: "all", label: "Semua" },
-  { id: "expense", label: "Jajan Mulu" },
-  { id: "income", label: "Cuan Masuk" },
+  { id: "expense", label: "Pengeluaran Mulu" },
+  { id: "income", label: "Tabungan Masuk" },
   { id: "transfer", label: "Transfer" },
 ];
 
@@ -81,8 +81,8 @@ export default function BerandaPage() {
     const lastNet = lmInflow - lmOutflow;
     const growthLabel =
       lastNet > 0
-        ? `${thisNet - lastNet >= 0 ? "+" : ""}${Math.round(((thisNet - lastNet) / lastNet) * 100)}% cuan bulan ini 🚀`
-        : "+8.5% cuan bulan ini 🚀";
+        ? `${thisNet - lastNet >= 0 ? "+" : ""}${Math.round(((thisNet - lastNet) / lastNet) * 100)}% tabungan bulan ini 🚀`
+        : "+8.5% tabungan bulan ini 🚀";
 
     const wStart = startOfWeek(ref);
     const lwStart = addDays(wStart, -7);
@@ -112,9 +112,9 @@ export default function BerandaPage() {
       weekMsg = `Keren! Kamu hemat ${pct}% dibanding minggu lalu 🎉 Pertahankan vibe hematnya!`;
     } else if (lastWeekExpense > 0) {
       const pct = Math.round(((thisWeekExpense - lastWeekExpense) / lastWeekExpense) * 100);
-      weekMsg = `Oops, jajan naik ${pct}% dari minggu lalu 🥺 Tetap semangat hemat ya bestie!`;
+      weekMsg = `Oops, pengeluaran naik ${pct}% dari minggu lalu 🥺 Tetap semangat hemat ya bestie!`;
     } else {
-      weekMsg = "Awal minggu yang rapi ✨ Catat cuanmu sat-set biar makin gemes!";
+      weekMsg = "Awal minggu yang rapi ✨ Catat tabunganmu sat-set biar makin gemes!";
     }
 
     const maxLimit = wallets.reduce((m, w) => Math.max(m, w.dailyLimit), 0);
@@ -173,7 +173,7 @@ export default function BerandaPage() {
       {goals.length > 0 && <FeaturedGoalCard goals={goals} onDone={(message) => ui.toast(message)} />}
 
       <section>
-        <h2 className="mb-3 font-outfit text-lg font-semibold">Catatan Jajan Terakhir 🧾</h2>
+        <h2 className="mb-3 font-outfit text-lg font-semibold">Catatan Pengeluaran Terakhir 🧾</h2>
         <div className="flex flex-wrap gap-2">
           {FILTERS.map((f) => (
             <button
@@ -193,7 +193,7 @@ export default function BerandaPage() {
             <div className="flex flex-col items-center gap-2 rounded-lg bg-inset px-4 py-6 text-center">
               <KawaiiMascot size={148} />
               <p className="font-manrope text-sm text-muted">
-                Belum ada catatan di sini. Catat cuan pertamamu sat-set ✨
+                Belum ada catatan di sini. Catat tabungan pertamamu sat-set ✨
               </p>
             </div>
           ) : (

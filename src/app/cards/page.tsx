@@ -340,7 +340,7 @@ export default function CardsPage() {
         {limitOpen && (
           <Overlay onClose={() => setLimitOpen(false)}>
             <h3 className="font-outfit text-xl font-semibold">Atur Limit Harian 🎛️</h3>
-            <p className="mt-1 font-manrope text-sm text-muted">Geser untuk memilih batas jajan harian.</p>
+            <p className="mt-1 font-manrope text-sm text-muted">Geser untuk memilih batas pengeluaran harian.</p>
             <p className="tnum mt-4 text-center text-3xl font-bold">{formatRupiah(limitDraft)}</p>
             <input
               type="range"

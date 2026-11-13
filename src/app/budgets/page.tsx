@@ -10,7 +10,6 @@ import { Overlay, Pressable } from "@/components/ui/SquircleCard";
 import { useUi } from "@/components/layout/AppShell";
 import { useBudgets, useGoals, useTransactions, useWallets } from "@/hooks/useLocalDb";
 import {
-  addBudget,
   addGoal,
   createTransaction,
   deleteBudget,
@@ -47,11 +46,7 @@ export default function BudgetsPage() {
 
   const [editLimitOpen, setEditLimitOpen] = useState(false);
   const [editLimitValue, setEditLimitValue] = useState("");
-  const [addCatOpen, setAddCatOpen] = useState(false);
   const [editCat, setEditCat] = useState<Budget | null>(null);
-  const [editCatName, setEditCatName] = useState("");
-  const [editCatSubtitle, setEditCatSubtitle] = useState("");
-  const [editCatIcon, setEditCatIcon] = useState("✨");
   const [editCatLimit, setEditCatLimit] = useState("");
   const [deleteCat, setDeleteCat] = useState<Budget | null>(null);
   const [editGoal, setEditGoal] = useState<Goal | null>(null);
@@ -72,10 +67,6 @@ export default function BudgetsPage() {
   const [gTarget, setGTarget] = useState("");
   const [gDate, setGDate] = useState("");
   const [gMonthly, setGMonthly] = useState("");
-  const [catName, setCatName] = useState("");
-  const [catSubtitle, setCatSubtitle] = useState("");
-  const [catIcon, setCatIcon] = useState("✨");
-  const [catLimit, setCatLimit] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -92,38 +83,9 @@ export default function BudgetsPage() {
       await scaleBudgetLimits(value);
       setEditLimitOpen(false);
       setEditLimitValue("");
-      ui.toast(`Total batas jajan diatur jadi ${formatRupiah(value)} ✨`);
+      ui.toast(`Total batas pengeluaran diatur jadi ${formatRupiah(value)} ✨`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Gagal menyimpan");
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const saveCat = async () => {
-    const limit = Math.round(Number(catLimit.replace(/\D/g, "")) || 0);
-    if (!catName.trim() || limit <= 0) return openError("Isi nama dan limit kategori");
-    setBusy(true);
-    setError("");
-    try {
-      const budget: Budget = {
-        id: uid("bud"),
-        name: catName.trim(),
-        subtitle: catSubtitle.trim() || "Kategori jajan baru",
-        icon: catIcon.trim() || "✨",
-        limitAmount: limit,
-        spentAmount: 0,
-        period: periodLabel,
-      };
-      await addBudget(budget);
-      setAddCatOpen(false);
-      setCatName("");
-      setCatSubtitle("");
-      setCatIcon("✨");
-      setCatLimit("");
-      ui.toast(`Kategori "${budget.name}" ditambahkan ✨`);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Gagal menambah kategori");
     } finally {
       setBusy(false);
     }
@@ -132,19 +94,13 @@ export default function BudgetsPage() {
   const saveEditCat = async () => {
     if (!editCat) return;
     const limit = Math.round(Number(editCatLimit.replace(/\D/g, "")) || 0);
-    if (!editCatName.trim() || limit <= 0) return openError("Isi nama dan limit baru");
+    if (limit <= 0) return openError("Isi limit baru dulu");
     setBusy(true);
     setError("");
     try {
-      await updateBudget(editCat.id, {
-        name: editCatName.trim(),
-        subtitle: editCatSubtitle.trim() || "Kategori jajan",
-        icon: editCatIcon,
-        limitAmount: limit,
-      });
-      const name = editCatName.trim();
+      await updateBudget(editCat.id, { limitAmount: limit });
       setEditCat(null);
-      ui.toast(`Kategori "${name}" diperbarui ✨`);
+      ui.toast(`Limit "${editCat.name}" diperbarui ✨`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Gagal menyimpan");
     } finally {
@@ -299,13 +255,13 @@ export default function BudgetsPage() {
     <main className="space-y-5">
       <header>
         <h1 className="font-outfit text-2xl font-semibold">Atur Duit & Celengan Impian 💰</h1>
-        <p className="font-manrope text-sm text-muted">Rapikan jajan dan kejar mimpi sat-set ✨</p>
+        <p className="font-manrope text-sm text-muted">Rapikan pengeluaran dan kejar mimpi sat-set ✨</p>
       </header>
 
-      {/* Batas Jajan Bulan Ini */}
+      {/* Batas Pengeluaran Bulan Ini */}
       <section className="cloud-card p-5">
         <div className="flex items-center justify-between">
-          <p className="font-manrope text-xs font-bold uppercase tracking-wider text-muted">Batas Jajan {periodLabel}</p>
+          <p className="font-manrope text-xs font-bold uppercase tracking-wider text-muted">Batas Pengeluaran {periodLabel}</p>
           <Pressable className="btn-ghost h-8 px-3 text-xs" onClick={() => { setError(""); setEditLimitValue(String(totals.limit)); setEditLimitOpen(true); }}>
             Edit Limit
           </Pressable>
@@ -319,17 +275,15 @@ export default function BudgetsPage() {
           <span className="font-semibold text-income">Sisa Aman ✨ {formatRupiah(totals.sisa)}</span>
         </div>
         <p className="mt-3 rounded-full bg-inset px-3 py-1.5 font-manrope text-xs font-bold text-muted">
-          Rata-rata jajan {formatRupiah(totals.dailyAvg)} /hari
+          Rata-rata pengeluaran {formatRupiah(totals.dailyAvg)} /hari
         </p>
       </section>
 
-      {/* Kategori Jajan Kamu */}
+      {/* Kategori Pengeluaran Kamu */}
       <section>
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-outfit text-lg font-semibold">Kategori Jajan Kamu 🍰</h2>
-          <Pressable className="btn-primary h-9 px-3 text-xs" onClick={() => { setError(""); setAddCatOpen(true); }}>
-            + Tambah Kategori
-          </Pressable>
+          <h2 className="font-outfit text-lg font-semibold">Kategori Pengeluaran Kamu 🍰</h2>
+          <p className="font-manrope text-[11px] text-muted">Kategori muncul otomatis saat kamu catat pengeluaran baru</p>
         </div>
         <div className="space-y-3">
           {budgets.map((b) => {
@@ -341,7 +295,7 @@ export default function BudgetsPage() {
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
-                    onClick={() => { setError(""); setEditCat(b); setEditCatName(b.name); setEditCatSubtitle(b.subtitle); setEditCatIcon(b.icon); setEditCatLimit(String(b.limitAmount)); }}
+                    onClick={() => { setError(""); setEditCat(b); setEditCatLimit(String(b.limitAmount)); }}
                     className="flex min-w-0 flex-1 items-center gap-3 text-left"
                   >
                     <span className="grid h-10 w-10 place-items-center rounded-full bg-[var(--icon-badge-bg)] text-lg">{b.icon}</span>
@@ -357,7 +311,7 @@ export default function BudgetsPage() {
                   <Pressable
                     ariaLabel={`Edit kategori ${b.name}`}
                     className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-inset text-secondary"
-                    onClick={() => { setError(""); setEditCat(b); setEditCatName(b.name); setEditCatSubtitle(b.subtitle); setEditCatIcon(b.icon); setEditCatLimit(String(b.limitAmount)); }}
+                    onClick={() => { setError(""); setEditCat(b); setEditCatLimit(String(b.limitAmount)); }}
                   >
                     <Pencil size={15} />
                   </Pressable>
@@ -442,7 +396,7 @@ export default function BudgetsPage() {
       <AnimatePresence>
         {editLimitOpen && (
           <Overlay onClose={() => setEditLimitOpen(false)}>
-            <h3 className="font-outfit text-xl font-semibold">Edit Total Batas Jajan</h3>
+            <h3 className="font-outfit text-xl font-semibold">Edit Total Batas Pengeluaran</h3>
             <p className="mt-1 font-manrope text-sm text-muted">Nominal dibagi proporsional ke tiap kategori.</p>
             <input
               className="inset-field mt-4 h-12 w-full px-3"
@@ -459,35 +413,13 @@ export default function BudgetsPage() {
         )}
       </AnimatePresence>
 
-      {/* Add category */}
-      <AnimatePresence>
-        {addCatOpen && (
-          <Overlay onClose={() => setAddCatOpen(false)}>
-            <h3 className="font-outfit text-xl font-semibold">Tambah Kategori Jajan</h3>
-            <div className="mt-4 space-y-3">
-              <input className="inset-field h-12 w-full px-3" placeholder="Nama kategori" value={catName} onChange={(e) => setCatName(e.target.value)} />
-              <input className="inset-field h-12 w-full px-3" placeholder="Subjudul" value={catSubtitle} onChange={(e) => setCatSubtitle(e.target.value)} />
-              <EmojiPicker value={catIcon} onChange={setCatIcon} />
-              <input className="inset-field h-12 w-full px-3" inputMode="numeric" placeholder="Limit (cth: 500000)" value={catLimit} onChange={(e) => setCatLimit(e.target.value.replace(/[^\d]/g, ""))} />
-            </div>
-            {error && <p className="mt-2 font-manrope text-sm text-expense">{error}</p>}
-            <Pressable className="btn-primary mt-4 h-12 w-full" onClick={() => void saveCat()} disabled={busy}>
-              {busy ? "Menyimpan…" : "Tambah Kategori"}
-            </Pressable>
-          </Overlay>
-        )}
-      </AnimatePresence>
-
       {/* Edit category limit */}
       <AnimatePresence>
         {editCat && (
           <Overlay onClose={() => setEditCat(null)}>
-            <h3 className="font-outfit text-xl font-semibold">Edit Kategori {editCat.icon}</h3>
-            <p className="mt-1 font-manrope text-sm text-muted">Ubah nama, ikon, dan limit bulanan kategori ini.</p>
+            <h3 className="font-outfit text-xl font-semibold">Edit Limit {editCat.icon} {editCat.name}</h3>
+            <p className="mt-1 font-manrope text-sm text-muted">Nama & ikon mengikuti kategori di pencatatan — yang bisa diubah hanya limit bulanan.</p>
             <div className="mt-4 space-y-3">
-              <input className="inset-field h-12 w-full px-3" placeholder="Nama kategori" value={editCatName} onChange={(e) => setEditCatName(e.target.value)} />
-              <input className="inset-field h-12 w-full px-3" placeholder="Subjudul" value={editCatSubtitle} onChange={(e) => setEditCatSubtitle(e.target.value)} />
-              <EmojiPicker value={editCatIcon} onChange={setEditCatIcon} />
               <input
                 className="inset-field h-12 w-full px-3"
                 inputMode="numeric"

@@ -74,10 +74,10 @@ export function CelebrationModal({
             {tx.type === "income" && (
               <div className="relative text-center">
                 <span className="chip-income inline-flex rounded-full px-3 py-1 font-manrope text-[10px] font-bold tracking-wide">
-                  REZEKI MASUK 💰 • CUAN TERVERIFIKASI ✨
+                  REZEKI MASUK 💰 • TABUNGAN TERVERIFIKASI ✨
                 </span>
-                <h3 className="mt-3 font-outfit text-2xl font-semibold">Alhamdulillah, Cuan Masuk! 💸✨</h3>
-                <p className="font-outfit text-lg font-semibold text-secondary">Cuan Berhasil Mendarat! 🥂</p>
+                <h3 className="mt-3 font-outfit text-2xl font-semibold">Alhamdulillah, Tabungan Masuk! 💸✨</h3>
+                <p className="font-outfit text-lg font-semibold text-secondary">Tabungan Berhasil Mendarat! 🥂</p>
                 <p className="mt-2 font-manrope text-xs text-muted">{tx.invoiceCode}</p>
               </div>
             )}
@@ -115,7 +115,7 @@ export function CelebrationModal({
                   onClick={async () => {
                     const text = `${tx.invoiceCode}\n${tx.category} ${formatRupiah(tx.amount)}\n${formatDateTime(tx.date, tx.time)}\n${tx.note}`;
                     if (navigator.share) {
-                      await navigator.share({ title: "Bukti Cuan MochiMoy", text }).catch(() => undefined);
+                      await navigator.share({ title: "Bukti Tabungan MochiMoy", text }).catch(() => undefined);
                       return;
                     }
                     await navigator.clipboard.writeText(text);

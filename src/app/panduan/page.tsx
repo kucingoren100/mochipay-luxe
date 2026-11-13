@@ -11,10 +11,10 @@ const SECTIONS: { id: string; emoji: string; title: string; body: string[]; step
     title: "Mulai Cepat",
     body: [
       "MochiMoy adalah buku kas kawaii yang jalan 100% di perangkatmu. Semua catatan, dompet, dan celengan tersimpan lokal di browser (IndexedDB), jadi tetap kebuka walau tanpa internet.",
-      "Saat pertama dibuka, aplikasi menyiapkan data awal: beberapa dompet contoh dengan saldo Rp 0 supaya kamu bisa langsung coba catat cuan.",
+      "Saat pertama dibuka, aplikasi menyiapkan data awal: beberapa dompet contoh dengan saldo Rp 0 supaya kamu bisa langsung coba catat tabungan.",
     ],
     steps: [
-      "Tekan tombol \"+ Catat Cuan\" (bawah kanan di HP, sidebar kiri di laptop) untuk mencatat transaksi pertama.",
+      "Tekan tombol \"+ Catat Tabungan\" (bawah kanan di HP, sidebar kiri di laptop) untuk mencatat transaksi pertama.",
       "Tekan \"Install App 📲\" di beranda kalau mau pakai seperti aplikasi biasa (PWA), lengkap dengan mode offline.",
       "Buka halaman Saya untuk ganti nama panggilan, tema, dan panduan privasi angka.",
     ],
@@ -22,19 +22,19 @@ const SECTIONS: { id: string; emoji: string; title: string; body: string[]; step
   {
     id: "beranda",
     emoji: "🏠",
-    title: "Beranda: Pantau Cuan Sekilas",
+    title: "Beranda: Pantau Tabungan Sekilas",
     body: [
-      "Kartu besar \"Total Cuan Kamu / Duit Dingin\" menjumlahkan saldo semua dompetmu. Angka ini sama dengan yang tampil di preview halaman Saya.",
-      "Ikon mata di kartu itu untuk menyembunyikan atau menampilkan saldo (berguna saat layar diliatin orang). Chip hijau menunjukkan perbandingan cuan bulan ini vs bulan lalu, dan pill bawah menunjukkan status Limit Harian.",
-      "Grafik batang mingguan membandingkan pemasukan vs jajan 7 hari terakhir, lengkap pesan semangat. Di bawahnya ada Aksi Cepat dan catatan transaksi terakhir yang bisa diketuk untuk lihat detail.",
+      "Kartu besar \"Total Tabungan Kamu / Duit Dingin\" menjumlahkan saldo semua dompetmu. Angka ini sama dengan yang tampil di preview halaman Saya.",
+      "Ikon mata di kartu itu untuk menyembunyikan atau menampilkan saldo (berguna saat layar diliatin orang). Chip hijau menunjukkan perbandingan tabungan bulan ini vs bulan lalu, dan pill bawah menunjukkan status Limit Harian.",
+      "Grafik batang mingguan membandingkan pemasukan vs pengeluaran 7 hari terakhir, lengkap pesan semangat. Di bawahnya ada Aksi Cepat dan catatan transaksi terakhir yang bisa diketuk untuk lihat detail.",
     ],
   },
   {
     id: "catat",
     emoji: "✍️",
-    title: "Catat Transaksi (Jajan, Cuan, Transfer)",
+    title: "Catat Transaksi (Pengeluaran, Tabungan, Transfer)",
     body: [
-      "Sheet \"Catat Cuan\" punya tiga tab: Pengeluaran (jajan), Pemasukan (cuan masuk), dan Transfer (pindah dana antar dompet atau setor ke celengan).",
+      "Sheet \"Catat Tabungan\" punya tiga tab: Pengeluaran, Pemasukan (tabungan masuk), dan Transfer (pindah dana antar dompet atau setor ke celengan).",
       "Preview nominal besar muncul di atas keyboard angka supaya ketikanmu gampang dibaca. Pilih kategori beserta ikonnya, dompet sumber, tanggal & jam, plus catatan maksimal 120 kata.",
     ],
     steps: [
@@ -58,7 +58,7 @@ const SECTIONS: { id: string; emoji: string; title: string; body: string[]; step
     emoji: "📊",
     title: "Riwayat & Analisis",
     body: [
-      "Halaman Riwayat menampilkan donat pembagian jajan per kategori plus daftar transaksi lengkap.",
+      "Halaman Riwayat menampilkan donat pembagian pengeluaran per kategori plus daftar transaksi lengkap.",
       "Filter periode: Bulan Ini, Minggu Ini, Bulan Lalu, atau Custom dengan tanggal bebas. Filter tipe: Semua, Pengeluaran, Pemasukan, Transfer. Ada juga filter kategori dan dompet lewat dropdown gemas.",
       "Tombol unduh di atas menyiapkan file CSV buat rekap di spreadsheet favoritmu.",
     ],
@@ -66,10 +66,11 @@ const SECTIONS: { id: string; emoji: string; title: string; body: string[]; step
   {
     id: "budget",
     emoji: "🍰",
-    title: "Kategori Jajan & Limit",
+    title: "Kategori Pengeluaran & Limit",
     body: [
-      "Di halaman Celengan (menu Budget), kartu paling atas menunjukkan Batas Jajan bulan ini: terpakai, sisa aman, dan rata-rata jajan per hari. Tombol \"Edit Limit\" mengubah total limit dan membaginya proporsional ke semua kategori.",
+      "Di halaman Celengan (menu Budget), kartu paling atas menunjukkan Batas Pengeluaran bulan ini: terpakai, sisa aman, dan rata-rata pengeluaran per hari. Tombol \"Edit Limit\" mengubah total limit dan membaginya proporsional ke semua kategori.",
       "Setiap kartu kategori punya tiga kendali: ketuk kartunya untuk buka editor, ikon pensil untuk edit nama/subjudul/ikon/limit kategori, dan ikon tempat sampah merah untuk menghapus kategori beserta konfirmasi.",
+      "Tidak ada tombol tambah kategori lagi di sini — kartu kategori otomatis muncul saat kamu mencatat pengeluaran dengan kategori yang belum punya budget (limit awal Rp 500.000, tinggal disesuaikan lewat editor).",
       "Menghapus kategori tidak menghapus catatan transaksi lama — catatan tetap menyimpan nama & ikon kategorinya sebagai snapshot.",
     ],
   },
@@ -146,9 +147,9 @@ const SECTIONS: { id: string; emoji: string; title: string; body: string[]; step
     emoji: "📲",
     title: "Galeri Widget & Pintasan Home Screen",
     body: [
-      "MochiMoy menyiapkan dua keluarga tampilan widget: keuangan MochiMoy 💰 (11 varian — saldo, jajan, celengan, budget, dll.) dan Meow Todo 🐱 (Daftar Tugas 3x2 + Kalender Dot Matrix 3x2). Keduanya adalah pratinjau live — angkanya data asli milikmu.",
+      "MochiMoy menyiapkan dua keluarga tampilan widget: keuangan MochiMoy 💰 (11 varian — saldo, pengeluaran, celengan, budget, dll.) dan Meow Todo 🐱 (Daftar Tugas 3x2 + Kalender Dot Matrix 3x2). Keduanya adalah pratinjau live — angkanya data asli milikmu.",
       "Galerinya ada di Saya → \"Widget Desktop/HP 📲\" untuk melihat semua varian, dan di halaman Tugas ada \"📲 Lihat Widget\" untuk pratinjau keluarga Meow Todo. Buka salah satu untuk masuk ke modal pratinjau: geser kiri/kanan atau pakai titik pagination buat pindah varian.",
-      "Catatan jujur: widget home screen langsung dari PWA masih fitur eksperimen Chrome (status Backlog, belum dirilis) dan tidak tersedia di iOS. Jadi yang bisa dipasang sekarang adalah pintasan: long-press ikon MochiMoy di Layar Utama → seret shortcut Catat Cuan / Tugas / Kalender ke home screen.",
+      "Catatan jujur: widget home screen langsung dari PWA masih fitur eksperimen Chrome (status Backlog, belum dirilis) dan tidak tersedia di iOS. Jadi yang bisa dipasang sekarang adalah pintasan: long-press ikon MochiMoy di Layar Utama → seret shortcut Catat Tabungan / Tugas / Kalender ke home screen.",
       "Buka \"Versi Standalone 🔗\" lalu simpan lewat browser (Add to Home Screen / bookmark) untuk akses fullscreen sat-set. Datanya membaca database lokal yang sama, jadi saldo & tugas selalu sinkron.",
     ],
   },
@@ -160,7 +161,7 @@ const SECTIONS: { id: string; emoji: string; title: string; body: string[]; step
       "Q: Datanya tersimpan di mana? A: Hanya di browser perangkat ini (IndexedDB + localStorage). Tidak ada server, tidak ada akun, tidak ada data yang dikirim keluar.",
       "Q: Kenapa saldo di dua tempat berbeda? A: Semua tampilan saldo membaca sumber yang sama; kalau terlihat beda, biasanya layar belum di-refresh — tarik ke bawah atau reload sekali.",
       "Q: Bisa pakai offline? A: Bisa. Setelah sekali dimuat (atau setelah install PWA), aplikasi tetap jalan tanpa internet.",
-      "Tips: pakai kategori terpisah untuk jajan harian vs tagihan rutin biar donat riwayat lebih jujur. Tips lain: set Limit Harian di dompet utama supaya pill status di beranda bisa mengingatkanmu sebelum kebablasan.",
+      "Tips: pakai kategori terpisah untuk pengeluaran harian vs tagihan rutin biar donat riwayat lebih jujur. Tips lain: set Limit Harian di dompet utama supaya pill status di beranda bisa mengingatkanmu sebelum kebablasan.",
     ],
   },
 ];
@@ -226,7 +227,7 @@ export default function PanduanPage() {
         <div>
           <p className="font-outfit text-lg font-semibold">Siap jadi bestie finansialmu 💖</p>
           <p className="mt-1 font-manrope text-sm leading-6 text-muted">
-            Kalau masih bingung, buka lagi halaman ini kapan saja dari Saya → Panduan. Semangat rapikan cuan!
+            Kalau masih bingung, buka lagi halaman ini kapan saja dari Saya → Panduan. Semangat rapikan tabungan!
           </p>
           <Link href="/" className="btn-primary mt-3 inline-flex h-11 items-center px-4 text-sm">
             Kembali ke Beranda

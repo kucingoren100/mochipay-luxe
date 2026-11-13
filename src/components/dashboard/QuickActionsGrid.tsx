@@ -4,7 +4,7 @@ import { Pressable } from "@/components/ui/SquircleCard";
 import { KawaiiIcon, type KawaiiIconName } from "@/components/ui/KawaiiIcon";
 
 const ACTIONS = [
-  { id: "catat", label: "Catat Cuan", hint: "Manual Log", icon: "pill-ledger" },
+  { id: "catat", label: "Catat Tabungan", hint: "Manual Log", icon: "pill-ledger" },
   { id: "riwayat", label: "Riwayat & Analisis", hint: "Lihat buku kas", icon: "pill-category" },
   { id: "csv", label: "Download CSV", hint: "Backup", icon: "pill-bookmark" },
 ] as const satisfies readonly { id: string; label: string; hint: string; icon: KawaiiIconName }[];

@@ -136,7 +136,7 @@ export function BottomNav({ onCatat }: { onCatat: () => void }) {
       {!isTodo && (
         <motion.button
           type="button"
-          aria-label="Catat Cuan"
+          aria-label="Catat Tabungan"
           whileTap={{ scale: 0.9 }}
           onClick={onCatat}
           className="fixed right-6 z-40 grid h-14 w-14 place-items-center rounded-2xl text-on-primary lg:hidden"

@@ -25,11 +25,11 @@ export const WIDGET_VARIANTS: WidgetVariant[] = [
   { id: "budget-4x1", title: "Anggaran", size: "4x1", desc: "Maskot uang 💸, total budget, badge persen terpakai, dan sisa budget aman." },
   { id: "stats-4x1", title: "Statistik Bulanan", size: "4x1", desc: "Pengeluaran vs pemasukan bulan ini (plus delta) dengan maskot kucing pensil di kanan." },
   { id: "actions-4x1", title: "Entri Cepat", size: "4x1", desc: "Bar 5 shortcut squircle mirip pill header: Buku Besar, Berulang, Kategori, Reimburse, Bookmark." },
-  { id: "bar-4x1", title: "Graf Batang", size: "4x1", desc: "Intensitas jajan harian bulan ini sebagai batang vertikal berwarna aksen tema." },
+  { id: "bar-4x1", title: "Graf Batang", size: "4x1", desc: "Intensitas pengeluaran harian bulan ini sebagai batang vertikal berwarna aksen tema." },
   { id: "curve-4x1", title: "Graf Kurva", size: "4x1", desc: "Sparkline mulus kumulatif pemasukan vs pengeluaran sepanjang bulan + garis threshold putus-putus." },
   { id: "pie-4x2", title: "Graf Pie", size: "4x2", desc: "Donut kategori di kiri; total pengeluaran bulanan dan persentase kategori teratas di kanan." },
   { id: "assets-4x2", title: "Aset", size: "4x2", desc: "Donut distribusi saldo antar dompet dengan total saldo dan rincian persen per akun." },
-  { id: "cal-week-4x1", title: "Kalender Mingguan", size: "4x1", desc: "Strip 7 hari (Min–Sab) dengan nomor hari dan nominal jajan di bawahnya; hari puncak disorot." },
+  { id: "cal-week-4x1", title: "Kalender Mingguan", size: "4x1", desc: "Strip 7 hari (Min–Sab) dengan nomor hari dan nominal pengeluaran di bawahnya; hari puncak disorot." },
   { id: "cal-year", title: "Kalender Tahunan & Bulanan", size: "4x1 / 4x3", desc: "Grid 12 bulan dengan total per bulan (bulan tertinggi disorot stroberi) + matriks bulan penuh ber-heatmap pastel." },
 ];
 
@@ -97,7 +97,7 @@ export function WidgetPreviewCard({ variant, data }: { variant: WidgetVariant; d
     return (
       <div className="flex w-full items-center gap-3 rounded-full bg-[linear-gradient(120deg,var(--primary),var(--tertiary))] px-4 py-3 text-on-primary">
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/25 text-lg">{topCat ? "🍔" : "🍔"}</span>
-        <span className="min-w-0 flex-1 truncate font-manrope text-sm font-bold">{topCat ? topCat[0] : "Makanan & Jajan"}</span>
+        <span className="min-w-0 flex-1 truncate font-manrope text-sm font-bold">{topCat ? topCat[0] : "Makanan & Pengeluaran"}</span>
         <span className="tnum font-manrope text-xs font-bold">{count} tx · {formatRupiah(topCat ? topCat[1] : 0, mask)}</span>
       </div>
     );
